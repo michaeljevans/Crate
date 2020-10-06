@@ -19,5 +19,5 @@ Object.keys(models).forEach(modelName => {
 
 models.sequelize = databaseConnection
 models.Sequelize = Sequelize
-
+//what does models look at this point?
 export default models

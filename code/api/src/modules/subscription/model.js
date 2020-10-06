@@ -14,6 +14,7 @@ module.exports = function(sequelize, DataTypes) {
   Subscription.associate = function(models) {
     Subscription.belongsTo(models.User)
     Subscription.belongsTo(models.Crate)
+    //is belongsTo a function of sequelize?
   }
 
   return Subscription
