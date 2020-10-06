@@ -10,6 +10,7 @@ import startServer from './setup/server/start-server'
 // Create new server
 const app = new Express()
 const server = new Server(app)
+// App component lives in ./setup/client
 
 // Load modules
 loadModules(app)
