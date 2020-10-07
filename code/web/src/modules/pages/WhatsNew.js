@@ -29,7 +29,7 @@ class WhatsNew extends PureComponent {
   }
 
   // Runs on client only
-  componentDidMount() {
+   componentDidMount() {
     this.props.getProductList()
   }
 

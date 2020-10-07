@@ -8,7 +8,8 @@ export const crateList = {
   path: '/admin/crates',
   component: CrateList,
   auth: true,
-  role: params.user.roles.admin
+  role: params.user.roles.admin 
+    // this seems like a pretty EXTRA way to store user and admin characteristics... why json??
 }
 
 export const crateCreate = {

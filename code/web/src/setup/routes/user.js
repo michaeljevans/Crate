@@ -20,6 +20,7 @@ export default {
     path: '/user/profile',
     component: Profile,
     auth: true
+    // pretty cool way to organize whether a component is visible logged out
   },
 
   subscriptions: {

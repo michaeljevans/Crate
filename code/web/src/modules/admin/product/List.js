@@ -26,6 +26,7 @@ class List extends PureComponent {
   // Runs on server only for SSR
   static fetchData({ store }) {
     return store.dispatch(getProductList())
+    // undefined 
   }
 
   // Runs on client only
