@@ -21,7 +21,8 @@ class List extends PureComponent {
 
   componentDidMount() {
     const { dispatch } = this.props
-
+    // dispatches getList action that fetches crate lists
+    // dispatch is a prop??
     dispatch(getCratesList())
   }
 
@@ -35,6 +36,7 @@ class List extends PureComponent {
 
   render() {
     const { isLoading, list } = this.props.crates
+    console.log('LIST:', list)
 
     return (
       <View style={styles.container}>
@@ -73,4 +75,5 @@ function listState(state) {
   }
 }
 
+console.log('list state:', listState)
 export default connect(listState)(withNavigation(List))
