@@ -5,7 +5,10 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 // URL
+// assigning the frontend server to a variable and exporting variable
 export const APP_URL = process.env.APP_URL
+
+// assigning the backend server API to a variable and exporting variable
 export const APP_URL_API = process.env.APP_URL_API
 
 // Environment
