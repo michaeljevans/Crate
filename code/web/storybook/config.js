@@ -1,6 +1,8 @@
 // Imports
 import { configure } from '@storybook/react'
 
+// React Storybook uses this config.js file as the entry point. This is the file loaded by webpack when it's initializing.
+
 function loadStories() {
   require('./stories/common.js'),
     require('./stories/buttons.js'),
