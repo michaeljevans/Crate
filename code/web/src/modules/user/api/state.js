@@ -11,11 +11,14 @@ export const userInitialState = {
 }
 
 // State
+// state is given a default value
 export default (state = userInitialState, action) => {
   switch (action.type) {
+    // if action type === SET_USER, reducer will update state of user in store
     case SET_USER:
       return {
         ...state,
+        // helper function !isEmpty checks if action.user is an empty object and assigns boolean value
         isAuthenticated: !isEmpty(action.user),
         details: action.user,
       }

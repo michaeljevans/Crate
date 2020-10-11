@@ -14,14 +14,18 @@ export const LOGOUT = 'AUTH/LOGOUT'
 
 // Actions
 
-// Set a user after login or using localStorage token
+// Adds user to store after successful login
+// If token was returned after successful login (from login, and 'userLogin' on the BE) then it sets a default header for API requests with bearer token  for authorization to access API 
+// I think it's a JSON Web Token(JWT) and token is a text string.
+// If there is no token (token has falsy value) then the default header is deleted (this operation might only happen when the user logs out ????? )
+
 export function setUser(token, user) {
   if (token) {
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
   } else {
     delete axios.defaults.headers.common['Authorization'];
   }
-
+// dispatches action to reducer to update user state in store
   return { type: SET_USER, user }
 }
 
@@ -33,6 +37,9 @@ export function login(userCredentials, isLoading = true) {
       isLoading
     })
 
+    // post request using axios. routeApi is path to API, query is the operation type 
+    // 'operation' is the operation name, the term that picks which query to look for on the backend. On the BE the query is called userLogin 
+    // Provides userCredentials as arguments, and fields dictate what data we want returned from request
     return axios.post(routeApi, query({
       operation: 'userLogin',
       variables: userCredentials,
@@ -44,14 +51,16 @@ export function login(userCredentials, isLoading = true) {
         if (response.data.errors && response.data.errors.length > 0) {
           error = response.data.errors[0].message
         } else if (response.data.data.userLogin.token !== '') {
+          // if login (userLogin operation) was successful then assign data from the response as values for user and token
           const token = response.data.data.userLogin.token
           const user = response.data.data.userLogin.user
 
+          // dispatch SET_USER action by invoking this function 
           dispatch(setUser(token, user))
-
+          // adding the token and user to local storage
           loginSetUserLocalStorageAndCookie(token, user)
         }
-
+        // dispatching LOGIN_RESPONSE action which updates the isLoading property to false, signalling that this operation is complete. 
         dispatch({
           type: LOGIN_RESPONSE,
           error
