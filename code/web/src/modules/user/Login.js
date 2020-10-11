@@ -175,6 +175,7 @@ Login.propTypes = {
 }
 
 // Component State
+// accessing the user data from store to check error property
 function loginState(state) {
   return {
     user: state.user
