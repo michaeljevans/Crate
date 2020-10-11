@@ -37,11 +37,11 @@ class Login extends Component {
 
     // Function bindings
   }
-
+  
   onChange = (event) => {
     let user = this.state.user
     user[event.target.name] = event.target.value
-
+    // saving users credentials to state
     this.setState({
       user
     })
@@ -49,10 +49,13 @@ class Login extends Component {
 
   onSubmit = (event) => {
     event.preventDefault()
-
+    // dispatches action to display message to user
     this.props.messageShow('Logging in, please wait...')
 
     this.props.login(this.state.user)
+    // triggers login action object passing in user credientials, with built-in dispatch AUTH/LOGIN_REQUEST. This will setUser if login is successful
+    // returns an axios.POST
+    // use response to validate the login and display message to user is there is an error with login attempt
       .then(response => {
         if (this.props.user.error && this.props.user.error.length > 0) {
           this.props.messageShow(this.props.user.error)
@@ -113,6 +116,7 @@ class Login extends Component {
 
           {/* Login Form */}
           <form onSubmit={this.onSubmit}>
+            {/* when form is submitted the onSubmit method is invoked */}
             <div style={{ width: '25em', margin: '0 auto' }}>
               {/* Email */}
               <Input
@@ -146,6 +150,7 @@ class Login extends Component {
               </Link>
 
               {/* Form submit */}
+              {/* Button has a type of 'submit' so the form knows that this is the 'onSubmit' element */}
               <Button type="submit" theme="secondary" disabled={isLoading}>
                 Login
                 <Icon size={1.2} style={{ color: white }}>navigate_next</Icon></Button>
@@ -154,6 +159,7 @@ class Login extends Component {
         </GridCell>
 
         {/* Auth Check */}
+        {/* renders AuthCheck component */}
         <AuthCheck/>
       </Grid>
     )
