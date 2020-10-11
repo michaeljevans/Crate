@@ -2,6 +2,7 @@
 import { compose, combineReducers } from 'redux'
 import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
+import { composeWithDevTools } from 'redux-devtools-extension'
 //thunk allows for async interaction with the store: https://github.com/reduxjs/redux-thunk
 
 // App Imports
@@ -46,7 +47,7 @@ export const store = createStore(
   rootReducer,
   initialState,
 
-  compose(
+  composeWithDevTools(
     applyMiddleware(thunk),
   )
 )

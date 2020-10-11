@@ -20,6 +20,8 @@ export default function (app) {
   console.info('SETUP - Load routes..')
 
   // Store (new store for each request)
+  // This store seems to be for Server-side renders
+    // has zero corelation with Client-side rendered store 
   const store = createStore(
     rootReducer,
     applyMiddleware(thunk)

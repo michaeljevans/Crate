@@ -11,6 +11,7 @@ export const routes = Object.assign(admin, home, user, product, crate)
 
 // API Routes
 export const routeApi = APP_URL_API
+//allowing for dynamic production / dev env
 
 // Image
 export const routeImage = APP_URL_API

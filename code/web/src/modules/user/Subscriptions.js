@@ -26,6 +26,11 @@ class Subscriptions extends PureComponent {
   // Runs on client only
   componentDidMount() {
     this.props.getListByUser()
+    //subscription list:
+    //dispatches SUBSCRIPTIONS_GET_LISTBYUSERREQUEST
+    // POSTS query - subscriptionsByUser
+    // does not provide arguments (implicitly axios may use auth token)
+    // gets id, user(name / email), and the crate subscribed to
   }
 
   render() {

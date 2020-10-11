@@ -155,6 +155,8 @@ class Login extends Component {
 
         {/* Auth Check */}
         <AuthCheck/>
+        {/* authCheck will trigger a redirect to '/Crate' if a user is present in props 
+        or to the admin dashboard if the user is an admin*/}
       </Grid>
     )
   }

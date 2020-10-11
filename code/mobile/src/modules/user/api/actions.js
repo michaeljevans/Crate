@@ -43,6 +43,7 @@ export function login(userCredentials, isLoading = true) {
       operation: 'userLogin',
       variables: userCredentials,
       fields: ['user {name, email, role}', 'token']
+      //this is where we'll determine if a survey has been taken, by receiving a survey's foreign key 
     }))
       .then(response => {
         let message = 'Please try again.'

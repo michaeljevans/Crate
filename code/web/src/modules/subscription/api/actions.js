@@ -98,9 +98,10 @@ export function get(slug, isLoading = true) {
     })
 
     return axios.post(routeApi, query({
-      operation: 'subscription',
-      variables: { slug },
-      fields: ['id', 'user { name, email }', 'crate { id, name, description }', 'createdAt']
+      // queries GET data
+      operation: 'subscription', // query name
+      variables: { slug }, // payload
+      fields: ['id', 'user { name, email }', 'crate { id, name, description }', 'createdAt'] // desired response
     }))
       .then(response => {
         dispatch({
@@ -123,10 +124,16 @@ export function get(slug, isLoading = true) {
 // Create subscription
 export function create(variables) {
   return dispatch => {
+    // how does this dispatch know what to trigger?
+    // are we communicating with state in this moment? why dispatch?
     return axios.post(routeApi, mutation({
+      // in the BE sense, mutations are all methods which CRUD a resource
+
       operation: 'subscriptionCreate',
       variables,
       fields: ['id']
+      // if we're just getting an id, we have to fetch again
+      // wouldn't it be better to get the whole subscription, and store it immediately?
     }))
   }
 }

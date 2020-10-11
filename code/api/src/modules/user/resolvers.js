@@ -51,6 +51,9 @@ export async function login(parentValue, { email, password }) {
       }
 
       return {
+        //token gets stored by axios on FE
+        //userDetails gets stored in state 
+        //token and user also get sent to local storage and cookies
         user: userDetails,
         token: jwt.sign(userDetailsToken, serverConfig.secret)
       }

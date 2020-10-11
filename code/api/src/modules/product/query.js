@@ -27,6 +27,9 @@ export const productById = {
     productId: { type: GraphQLInt }
   },
   resolve: getById
+  // a query called on this type (ProductById) will execute 
+  // the resolve method with the argument, if the correct corresponding
+  // argument is provided
 }
 
 // Products Related

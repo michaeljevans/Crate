@@ -31,18 +31,21 @@ class Item extends PureComponent {
   onClickSubscribe = (crateId) => {
     this.setState({
       isLoading: true
+      // disables button preventing secondary clicks
     })
 
     this.props.messageShow('Subscribing, please wait...')
 
     this.props.create({ crateId })
+    // axios mutation post - sends a crate id for a new subscription, receives the id of that subscription
+    // is dispatch in the create function required for the following store messages (messageShow etc?)
       .then(response => {
         if (response.data.errors && response.data.errors.length > 0) {
           this.props.messageShow(response.data.errors[0].message)
         } else {
           this.props.messageShow('Subscribed successfully.')
 
-          this.props.history.push(userRoutes.subscriptions.path)
+          this.props.history.push(userRoutes.subscriptions.path) // takes us to the subscriptions page
         }
       })
       .catch(error => {
@@ -78,6 +81,11 @@ class Item extends PureComponent {
             <Button
               theme="primary"
               onClick={this.onClickSubscribe.bind(this, id)}
+              //wow I need to refresh on binding i guess
+              // this function may be useful to pass as a prop to a survey
+              // the survey submit button maybe triggers this where
+              // instead here the conditional would either subscribe
+              // or take us to /style-preferences
               type="button"
               disabled={ isLoading }
             >
@@ -104,5 +112,7 @@ function itemState(state) {
     user: state.user
   }
 }
-
+  // they're using custom names for mapStateToProps
+  // they're accumulating three functions as mapDispatchToProps, is this Thunk?
+  // can those affect state without being invoked by dispatch? are they even written to?
 export default connect(itemState, { create, messageShow, messageHide })(withRouter(Item))

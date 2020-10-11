@@ -26,6 +26,10 @@ class List extends PureComponent {
   // Runs on client only
   componentDidMount() {
     this.props.getCratesList('ASC')
+    // a post query for crates
+    // 'ASC' sorts them ascending - 'DESC' is also an option, 
+    // seems like Name values will work as well `api/modules/crate/resolvers line 19`
+    // returns a list with ids, names, descriptions and timestamps
   }
 
   render() {
@@ -51,11 +55,13 @@ class List extends PureComponent {
           <GridCell>
             {
               this.props.crates.isLoading
+              // crates in the store are fetched on componentDidMount
                 ? <Loading/>
                 : this.props.crates.list.length > 0
                     ? this.props.crates.list.map(crate => (
                       <div key={crate.id} style={{ margin: '2em', float: 'left' }}>
                         <CrateItem crate={crate}/>
+                        {/* here is where our subscription buttons live */}
                       </div>
                     ))
                     : <EmptyMessage message="No crates to show" />

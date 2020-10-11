@@ -14,12 +14,14 @@ export const LOGOUT = 'AUTH/LOGOUT'
 
 // Actions
 
-// Set a user after login or using localStorage token
 export function setUser(token, user) {
+  // Set a user after login or using localStorage token(?)
   if (token) {
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    // allows the token to be used in all axios posts
   } else {
     delete axios.defaults.headers.common['Authorization'];
+    // perhaps this is part of logout?
   }
 
   return { type: SET_USER, user }
@@ -27,6 +29,7 @@ export function setUser(token, user) {
 
 // Login a user using credentials
 export function login(userCredentials, isLoading = true) {
+  //I wonder if isLoading is ever set to false
   return dispatch => {
     dispatch({
       type: LOGIN_REQUEST,
@@ -35,8 +38,14 @@ export function login(userCredentials, isLoading = true) {
 
     return axios.post(routeApi, query({
       operation: 'userLogin',
+      //query name
       variables: userCredentials,
+      //query args
       fields: ['user {name, email, role}', 'token']
+      //requested values - these can hit multiple tables, 
+      //eventually this needs to request some sort of signal of whether a user has taken a survey
+      //(in the case that there's one survey per user). If there's ever more than one per user
+      //the survey signal should be stored with crates
     }))
       .then(response => {
         let error = ''
@@ -45,6 +54,7 @@ export function login(userCredentials, isLoading = true) {
           error = response.data.errors[0].message
         } else if (response.data.data.userLogin.token !== '') {
           const token = response.data.data.userLogin.token
+          // would love some more details about the token
           const user = response.data.data.userLogin.user
 
           dispatch(setUser(token, user))
@@ -54,6 +64,7 @@ export function login(userCredentials, isLoading = true) {
 
         dispatch({
           type: LOGIN_RESPONSE,
+          // closes isLoading and error handling
           error
         })
       })
