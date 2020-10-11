@@ -10,9 +10,10 @@ import admin from '../../setup/routes/admin'
 
 // Component
 const AuthCheck = (props) => (
-  // checks if user is authenticated to determine how to redirect the user
+  // first checks if user is authenticated to determine whether any redirection should be executed 
+  // if user is authenticated:
   // admins will be redirected to an admin dashboard
-  // users will be redirected to the Crates pages through the path value of 'crate.list.path'
+  // general users (customers) will be redirected to the Crates pages through the path value of 'crate.list.path'
   props.user.isAuthenticated ? (props.user.details.role === 'ADMIN' ? <Redirect to={admin.dashboard.path}/> : <Redirect to={crate.list.path}/>) : ''
 )
 
