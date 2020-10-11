@@ -113,6 +113,7 @@ function itemState(state) {
   }
 }
   // they're using custom names for mapStateToProps
-  // they're accumulating three functions as mapDispatchToProps, is this Thunk?
+  // they're accumulating three functions as mapDispatchToProps
   // can those affect state without being invoked by dispatch? are they even written to?
+  // some, if not all of these functions, call dispatch within themselves. 
 export default connect(itemState, { create, messageShow, messageHide })(withRouter(Item))

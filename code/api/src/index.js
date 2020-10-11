@@ -4,7 +4,7 @@ import express from 'express'
 // App Imports
 import setupLoadModules from './setup/load-modules'
 import setupGraphQL from './setup/graphql'
-  // THESE ARE OUR ROUTES
+  // THESE ARE OUR "ROUTES" the amalgamation of queries and mutations ^^
 import setupUpload from './setup/upload'
 import setupStartServer from './setup/start-server'
 

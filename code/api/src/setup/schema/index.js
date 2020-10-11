@@ -7,8 +7,9 @@ import mutation from './mutations'
 
 // Schema
 const schema = new GraphQLSchema({
-  // is schema a different use of DB vocab?
+  // this seems like a different use of DB schema vocab
   // methods for handling tables instead of mapping them out
+  // resolvers at bottom might use models as a map to access DB
   query,
   mutation
 })

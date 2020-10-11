@@ -5,10 +5,6 @@ import Detail from '../../modules/product/Detail'
 export default {
   product: {
     path: (slug = ':slug') => (`/product/${ slug }`),
-    //WHATS A SLUG?
     component: Detail
   }
 }
-
-
-

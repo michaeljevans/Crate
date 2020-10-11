@@ -8,5 +8,3 @@ import view from './view'
 
 // Write index.html
 fs.writeFileSync(path.join(__dirname, '..', '..', '..', 'public', 'index.html'), view(APP_URL, NODE_ENV))
-
-// I believe this is the entry point for the client side site

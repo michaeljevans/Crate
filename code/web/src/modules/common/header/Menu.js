@@ -14,9 +14,3 @@ const Menu = (props) => {
 }
 
 export default Menu
-
-const props = {
-  trees: 'bananas',
-  monkeys: 'bats',
-  children: 'toys'
-}
