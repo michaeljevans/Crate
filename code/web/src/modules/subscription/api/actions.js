@@ -121,6 +121,11 @@ export function get(slug, isLoading = true) {
 }
 
 // Create subscription
+// invoked when subscribe button is clicked
+// dispatches axios post request  
+// operation type of mutation
+// operation name is subscriptionCreate
+// Only getting an ID back from the post which means we have to run another fetch request to get actual data back for user
 export function create(variables) {
   return dispatch => {
     return axios.post(routeApi, mutation({
