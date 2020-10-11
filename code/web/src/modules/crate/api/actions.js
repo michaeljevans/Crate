@@ -16,6 +16,11 @@ export const CRATES_GET_FAILURE = 'CRATES/GET_FAILURE'
 // Actions
 
 // Get list of crates
+// dispatching action to fetch crates through axios post request
+// operation type is query and operation names that will be referenced by backend is 'crates'
+// received data should be ordered by ASCENDING order
+// default value for orderBy is 'DESC/descending' but we passed in argument of 'ASC' when getList was invoked
+// fields dictate the data we want to get back 
 export function getList(orderBy = 'DESC', isLoading = true) {
   return dispatch => {
     dispatch({
@@ -31,10 +36,12 @@ export function getList(orderBy = 'DESC', isLoading = true) {
     }))
       .then(response => {
         if (response.status === 200) {
+          // if response if ok then dispatch action which changes the isLoading property to false *** This enables the CrateItems to be rendered ***
           dispatch({
             type: CRATES_GET_LIST_RESPONSE,
             error: null,
             isLoading: false,
+            // adds data to store in reducer: action.list === response.data.data.crates
             list: response.data.data.crates
           })
         } else {
@@ -42,6 +49,7 @@ export function getList(orderBy = 'DESC', isLoading = true) {
         }
       })
       .catch(error => {
+        // if there is an error with fetch then CRATES_GET_LIST_FAILURE will be dispatched
         dispatch({
           type: CRATES_GET_LIST_FAILURE,
           error: 'Some error occurred. Please try again.',

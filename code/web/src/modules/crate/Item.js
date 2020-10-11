@@ -28,20 +28,25 @@ class Item extends PureComponent {
     }
   }
 
+  // button click on the 'Subscribe' button triggers onClickSubscribe method 
   onClickSubscribe = (crateId) => {
     this.setState({
       isLoading: true
     })
 
     this.props.messageShow('Subscribing, please wait...')
-
+    // invokes the 'create' action, passing in the crateId
+    // the create action posts a mutation called 'subscriptionCreate'
     this.props.create({ crateId })
       .then(response => {
         if (response.data.errors && response.data.errors.length > 0) {
           this.props.messageShow(response.data.errors[0].message)
         } else {
+          // if the creates response, is not an error...
+          // it will dispatch a message for user 
           this.props.messageShow('Subscribed successfully.')
-
+          // will trigger a move to another page(/subscriptions)
+          // *** THIS IS WHERE WE WILL REDIRECT THE USER TO THE STYLE SURVEY IF THE USER DOESN'T ALREADY HAVE A STYLE *** 
           this.props.history.push(userRoutes.subscriptions.path)
         }
       })
@@ -64,6 +69,8 @@ class Item extends PureComponent {
     const { isLoading } = this.state
 
     return (
+      // Each CrateItem renders a Card 
+      // Each crate has a subscription button 
       <Card style={{ width: '18em', backgroundColor: white }}>
         <p style={{ padding: '2em 3em 0 3em' }}>
           <img src={`${ APP_URL }/images/crate.png`} alt={name} style={{ width: '100%' }}/>
@@ -99,6 +106,7 @@ Item.propTypes = {
 }
 
 // Component State
+// accessing the user data from the store
 function itemState(state) {
   return {
     user: state.user
