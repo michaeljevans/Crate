@@ -8,6 +8,7 @@ import params from '../../config/params'
 import models from '../../setup/models'
 
 // Create
+// creating/ 'signing up' a new user 
 export async function create(parentValue, { name, email, password }) {
   // Users exists with same email check
   const user = await models.User.findOne({ where: { email } })
@@ -27,6 +28,10 @@ export async function create(parentValue, { name, email, password }) {
   }
 }
 
+// login method takes email and password as arguments
+// sequelize then queries the User Model in the database with the findOne method (using email as arg)
+// if this query fails to return a user with that email then an error message will be thrown
+// if the findOne method does return a User with that email then sequelize creates a variable called userDetails using user.get()
 export async function login(parentValue, { email, password }) {
   const user = await models.User.findOne({ where: { email } })
 
@@ -37,8 +42,11 @@ export async function login(parentValue, { email, password }) {
     const userDetails = user.get()
 
     // User exists
+    // if user exists, the variable passwordMatch is created by bcrypt.compare(password.userDetails.password)
     const passwordMatch = await bcrypt.compare(password, userDetails.password)
 
+    // if passwordMatch is a falsy value then an error will be thrown
+    // otherwise an userDetailsToken object will be created with the users details as properties
     if (!passwordMatch) {
       // Incorrect password
       throw new Error(`Sorry, the password you entered is incorrect. Please try again.`)
@@ -51,7 +59,9 @@ export async function login(parentValue, { email, password }) {
       }
 
       return {
+        // this is data that gets returned to front end in the post response
         user: userDetails,
+        // JWT (JSON Web Token) used for default axios header for making fetch requests on the front end(?)
         token: jwt.sign(userDetailsToken, serverConfig.secret)
       }
     }

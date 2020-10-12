@@ -5,7 +5,7 @@ import { GraphQLObjectType, GraphQLString, GraphQLInt } from 'graphql'
 const UserType = new GraphQLObjectType({
   name: 'user',
   description: 'User type',
-
+// defining what the data types of the values should be
   fields: () => ({
     id: { type: GraphQLInt },
     name: { type: GraphQLString },
@@ -18,6 +18,7 @@ const UserType = new GraphQLObjectType({
 })
 
 // User Login type
+// triggered in userLogin 
 const UserLoginType = new GraphQLObjectType({
   name: 'userAuth',
   description: 'User Authentication Type',

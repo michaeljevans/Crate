@@ -13,6 +13,9 @@ export default function (server) {
   server.use(authentication)
 
   // API (GraphQL on route `/`)
+  // defining the single endpoint 
+  // imports schema and tells server to use the schema
+  // schema is a root directory(?) for queries (get/read data) and mutations (other API calls that update/mutate data)
   server.use(serverConfig.graphql.endpoint, graphqlHTTP(request => ({
     schema,
     graphiql: serverConfig.graphql.ide,
