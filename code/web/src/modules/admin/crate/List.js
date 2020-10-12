@@ -20,6 +20,7 @@ import AdminMenu from '../common/Menu'
 import admin from '../../../setup/routes/admin'
 
 // Component
+// Admin crate list; can delete crate(s)
 class List extends PureComponent {
 
   // Runs on server only for SSR

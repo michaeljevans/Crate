@@ -25,6 +25,7 @@ import { messageShow, messageHide } from '../../common/api/actions'
 import AdminMenu from '../common/Menu'
 
 // Component
+// Individual crate create/edit
 class CreateOrEdit extends Component {
 
   constructor(props) {

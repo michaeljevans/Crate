@@ -28,6 +28,7 @@ import { upload, messageShow, messageHide } from '../../common/api/actions'
 import AdminMenu from '../common/Menu'
 
 // Component
+// Create or edit individual product
 class CreateOrEdit extends Component {
 
   constructor(props) {

@@ -21,6 +21,7 @@ import { routeImage } from '../../../setup/routes'
 import admin from '../../../setup/routes/admin'
 
 // Component
+// Admin product list; can delete product(s)
 class List extends PureComponent {
 
   // Runs on server only for SSR

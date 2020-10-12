@@ -5,6 +5,7 @@ import { GraphQLObjectType, GraphQLString, GraphQLInt } from 'graphql'
 import { UserType } from '../user/types'
 import CrateType from '../crate/types'
 
+// Subscription GraphQL object; fields represent returnable info
 // Subscription type
 const SubscriptionType = new GraphQLObjectType({
   name: 'subscription',

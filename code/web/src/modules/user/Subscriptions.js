@@ -16,6 +16,7 @@ import EmptyMessage from '../common/EmptyMessage'
 import SubscriptionItem from '../subscription/Item'
 
 // Component
+// User subscriptions
 class Subscriptions extends PureComponent {
 
   // Runs on server only for SSR

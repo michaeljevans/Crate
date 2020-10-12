@@ -11,6 +11,7 @@ import Menu from '../../common/header/Menu'
 import MenuItem from '../../common/header/MenuItem'
 
 // Component
+// Renders admin menu in the nav bar
 const AdminMenu = () => (
   <Grid style={{ backgroundColor: grey }}>
     <GridCell style={{ padding: '2em', textAlign: 'center' }}>

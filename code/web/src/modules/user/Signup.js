@@ -23,6 +23,7 @@ import { register } from './api/actions'
 import AuthCheck from '../auth/AuthCheck'
 
 // Component
+// Account setup
 class Signup extends Component {
 
   constructor(props) {

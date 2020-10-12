@@ -5,6 +5,7 @@ import { GraphQLString, GraphQLInt } from 'graphql'
 import { UserType } from './types'
 import { create, remove } from './resolvers'
 
+// Mutations for user; create, destroy
 // Create
 export const userSignup = {
   type: UserType,

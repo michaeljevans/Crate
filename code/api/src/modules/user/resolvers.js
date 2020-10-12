@@ -7,6 +7,7 @@ import serverConfig from '../../config/server'
 import params from '../../config/params'
 import models from '../../setup/models'
 
+// User resolvers; function names correspond to requests made by FE (and required parameters)
 // Create
 export async function create(parentValue, { name, email, password }) {
   // Users exists with same email check

@@ -18,6 +18,7 @@ import { messageShow, messageHide } from '../common/api/actions'
 import { create } from '../subscription/api/actions'
 
 // Component
+// Individual crate component
 class Item extends PureComponent {
 
   constructor(props) {

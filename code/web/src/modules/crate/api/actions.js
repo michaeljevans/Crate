@@ -14,6 +14,8 @@ export const CRATES_GET_RESPONSE = 'CRATES/GET_RESPONSE'
 export const CRATES_GET_FAILURE = 'CRATES/GET_FAILURE'
 
 // Actions
+// List of crate-related query/mutation requests FE can send to BE API
+// operation for each corresponds to resolver function name
 
 // Get list of crates
 export function getList(orderBy = 'DESC', isLoading = true) {

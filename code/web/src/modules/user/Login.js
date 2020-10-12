@@ -23,6 +23,7 @@ import { login } from './api/actions'
 import AuthCheck from '../auth/AuthCheck'
 
 // Component
+// User login
 class Login extends Component {
 
   constructor(props) {

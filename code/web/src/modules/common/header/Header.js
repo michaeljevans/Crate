@@ -19,6 +19,7 @@ import Menu from './Menu'
 import MenuItem from './MenuItem'
 
 // Component
+// Nav bar for site; changes based on whether a user is logged in
 const Header = (props) => {
   return (
     <header style={{

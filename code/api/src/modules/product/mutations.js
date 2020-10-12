@@ -5,6 +5,7 @@ import { GraphQLString, GraphQLInt } from 'graphql'
 import { ProductType } from './types'
 import { create, update, remove } from './resolvers'
 
+// Product mutations; create, update, destroy
 // Product create
 export const productCreate = {
   type: ProductType,

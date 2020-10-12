@@ -3,6 +3,7 @@ import React, { PureComponent } from 'react'
 import { withRouter } from 'react-router-dom'
 
 // Component
+// Returns user to top of page
 class ScrollToTop extends PureComponent {
 
   componentDidUpdate(prevProps) {

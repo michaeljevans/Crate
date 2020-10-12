@@ -14,6 +14,7 @@ import EmptyMessage from '../common/EmptyMessage'
 import ProductItem from '../product/Item'
 
 // Component
+// Related products
 class Related extends PureComponent {
 
   componentDidMount() {

@@ -1,6 +1,6 @@
 'use strict'
 
-// Product
+// Product database model
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('products', {
     name: {

@@ -19,6 +19,7 @@ import userRoutes from '../../setup/routes/user'
 import Onboarding from './Onboarding'
 
 // Component
+// Home page
 const Home = (props) => (
   <div>
     {/* Home */}

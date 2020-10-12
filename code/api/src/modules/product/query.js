@@ -5,6 +5,7 @@ import { GraphQLString, GraphQLInt, GraphQLList } from 'graphql'
 import { ProductType, ProductTypesType } from './types'
 import { getAll, getBySlug, getById, getRelated, getTypes } from './resolvers'
 
+// Product queries; index, by slug, by id, related, and types
 // Products All
 export const products = {
   type: new GraphQLList(ProductType),

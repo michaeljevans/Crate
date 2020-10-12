@@ -1,5 +1,5 @@
 'use strict'
-
+// Crate database model
 module.exports = function(sequelize, DataTypes) {
   let Crate = sequelize.define('crates', {
     name: {

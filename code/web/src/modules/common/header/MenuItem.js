@@ -9,6 +9,7 @@ import { primary, secondary } from '../../../ui/common/gradients'
 import { level1 } from '../../../ui/common/shadows'
 
 // Component
+// Individual items for nav bar
 const MenuItem = (props) => {
   const { children, to, type, active, style, section } = props
 

@@ -17,6 +17,7 @@ import { messageShow, messageHide } from '../common/api/actions'
 import { remove, getListByUser } from '../subscription/api/actions'
 
 // Component
+// Subscription component
 class Item extends PureComponent {
 
   constructor(props) {

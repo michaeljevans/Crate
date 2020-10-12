@@ -19,6 +19,7 @@ import crateRoutes from '../../setup/routes/crate'
 import userRoutes from '../../setup/routes/user'
 
 // Component
+// How It Works page
 const HowItWorks = (props) => (
   <div>
     {/* SEO */}

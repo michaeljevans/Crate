@@ -18,6 +18,8 @@ export const PRODUCTS_GET_RELATED_LIST_RESPONSE = 'PRODUCTS/GET_RELATED_LIST_RES
 export const PRODUCTS_GET_RELATED_LIST_FAILURE = 'PRODUCTS/GET_RELATED_LIST_FAILURE'
 
 // Actions
+// Product-related query/mutation requests FE can send to BE
+// operation refers to resolver function names
 
 // Get list of products
 export function getList(isLoading = true, forceRefresh = false) {

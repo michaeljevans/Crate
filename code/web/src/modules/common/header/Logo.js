@@ -10,6 +10,7 @@ import { textLevel1 } from '../../../ui/common/shadows'
 import home from '../../../setup/routes/home'
 
 // Component
+// App logo component
 const Logo = (props) => {
   const { ...others } = props
 

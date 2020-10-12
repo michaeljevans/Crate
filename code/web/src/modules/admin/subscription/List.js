@@ -15,6 +15,7 @@ import EmptyMessage from '../../common/EmptyMessage'
 import AdminMenu from '../common/Menu'
 
 // Component
+// Admin subscription list
 class List extends PureComponent {
 
   // Runs on server only for SSR

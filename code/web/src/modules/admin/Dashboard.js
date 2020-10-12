@@ -12,6 +12,7 @@ import { grey3 } from '../../ui/common/colors'
 import AdminMenu from './common/Menu'
 
 // Component
+// Admin dashboard
 const Dashboard = () => (
   <div>
     {/* SEO */}

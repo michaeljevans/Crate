@@ -17,6 +17,8 @@ export const SUBSCRIPTIONS_GET_RESPONSE = 'SUBSCRIPTIONS/GET_RESPONSE'
 export const SUBSCRIPTIONS_GET_FAILURE = 'SUBSCRIPTIONS/GET_FAILURE'
 
 // Actions
+// List of subscription-related query/mutation requests
+// operation matches function name in resolver
 
 // Get list of subscriptions
 export function getList(isLoading = true) {

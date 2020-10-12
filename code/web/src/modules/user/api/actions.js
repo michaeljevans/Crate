@@ -13,6 +13,8 @@ export const SET_USER = 'AUTH/SET_USER'
 export const LOGOUT = 'AUTH/LOGOUT'
 
 // Actions
+// User-related actions and query/mutation requests
+// operations match function names in API resolver
 
 // Set a user after login or using localStorage token
 export function setUser(token, user) {

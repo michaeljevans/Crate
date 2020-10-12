@@ -16,6 +16,7 @@ import userRoutes from '../../setup/routes/user'
 import { logout } from './api/actions'
 
 // Component
+// User profile
 const Profile = (props) => (
   <div>
     {/* SEO */}

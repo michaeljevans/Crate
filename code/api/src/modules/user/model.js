@@ -1,6 +1,8 @@
 'use strict'
 
-// User
+// User database model
+// Will likely need to add a 'style' attribute to be saved upon survey completion
+// User will have_many surveys
 module.exports = function(sequelize, DataTypes) {
   let User = sequelize.define('users', {
     name: {

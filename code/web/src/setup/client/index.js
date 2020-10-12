@@ -10,6 +10,8 @@ import { setUser, loginSetUserLocalStorageAndCookie } from '../../modules/user/a
 import ScrollToTop from '../../modules/common/ScrollToTop'
 import App from './App'
 
+// User token is stored, app is rendered
+
 // User Authentication
 const token = window.localStorage.getItem('token')
 if (token && token !== 'undefined' && token !== '') {

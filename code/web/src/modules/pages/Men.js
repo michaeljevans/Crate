@@ -18,6 +18,7 @@ import crateRoutes from '../../setup/routes/crate'
 import userRoutes from '../../setup/routes/user'
 
 // Component
+// Starting page for men's clothing/accessories
 const Men = (props) => (
   <Grid alignCenter={true} style={{ padding: '2em' }}>
     {/* SEO */}

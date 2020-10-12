@@ -2,6 +2,7 @@
 import params from '../../config/params'
 import models from '../../setup/models'
 
+// Resolvers for product queries and mutations
 // Get all products
 export async function getAll() {
   return await models.Product.findAll({ order: [['id', 'DESC']] })

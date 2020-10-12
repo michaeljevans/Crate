@@ -12,6 +12,7 @@ import { white, grey2, black } from '../../ui/common/colors'
 import { routeImage, routes } from '../../setup/routes'
 
 // Component
+// Item component
 const Item = (props) => {
 
   const { name, slug, description, image } = props.product

@@ -19,6 +19,7 @@ import Loading from '../common/Loading'
 import Related from './Related'
 
 // Component
+// Individual product details
 class Detail extends PureComponent {
 
   // Runs on server only for SSR

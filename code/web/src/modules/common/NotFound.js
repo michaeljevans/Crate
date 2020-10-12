@@ -13,6 +13,7 @@ import { APP_URL } from '../../setup/config/env'
 import home from '../../setup/routes/home'
 
 // Component
+// Catch-all for 404 error - page not found
 const NotFound = () => (
   <div>
     {/* SEO */}

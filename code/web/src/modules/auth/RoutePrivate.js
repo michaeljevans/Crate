@@ -8,6 +8,7 @@ import { connect } from 'react-redux'
 import userRoutes from '../../setup/routes/user'
 
 // Component
+// Redirects to the login path if user is not authenticated
 const RoutePrivate = (props) => (
   props.user.isAuthenticated
     ? props.role

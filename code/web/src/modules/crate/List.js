@@ -16,6 +16,7 @@ import EmptyMessage from '../common/EmptyMessage'
 import CrateItem from './Item'
 
 // Component
+// Crate list
 class List extends PureComponent {
 
   // Runs on server only for SSR

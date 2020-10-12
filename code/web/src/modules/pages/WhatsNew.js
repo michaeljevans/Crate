@@ -21,6 +21,7 @@ import EmptyMessage from '../common/EmptyMessage'
 import ProductItem from '../product/Item'
 
 // Component
+// What's New page
 class WhatsNew extends PureComponent {
 
   // Runs on server only for SSR

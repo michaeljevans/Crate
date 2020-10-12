@@ -8,6 +8,7 @@ import PropTypes from 'prop-types'
 import home from '../../setup/routes/home'
 
 // Component
+// Admin authentication; redirects to root if authentication fails
 const AuthAdminCheck = (props) => (
   props.user.isAuthenticated && props.user.details.role === 'ADMIN' ? '' : <Redirect to={home.home.path}/>
 )

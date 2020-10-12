@@ -1,6 +1,7 @@
 // App Imports
 import models from '../../setup/models'
 
+// Subscription resolvers; function names correspond to requests made by FE
 // Get subscription by ID
 export async function get(parentValue, { id }) {
   return await models.Subscription.findOne({

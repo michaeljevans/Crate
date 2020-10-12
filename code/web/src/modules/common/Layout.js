@@ -14,7 +14,7 @@ import { messageHide } from './api/actions'
 import Header from './header/Header'
 
 class Layout extends PureComponent {
-
+// App layout; header, content, messages
   render() {
     const { children } = this.props
 

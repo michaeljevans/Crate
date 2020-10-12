@@ -1,6 +1,7 @@
 // Imports
 import { GraphQLObjectType, GraphQLString, GraphQLInt } from 'graphql'
 
+// User GraphQL objects
 // User type
 const UserType = new GraphQLObjectType({
   name: 'user',
@@ -39,4 +40,5 @@ const UserGenderType = new GraphQLObjectType({
   })
 })
 
+// Will probably add a GraphQL object for user surveys
 export { UserType, UserLoginType, UserGenderType }
