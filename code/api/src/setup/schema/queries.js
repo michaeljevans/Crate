@@ -1,3 +1,5 @@
+// All queries from tables are imported into this file
+// This file is then imported into index.js along with mutations.js
 // Imports
 import { GraphQLObjectType } from 'graphql'
 

@@ -26,7 +26,7 @@ export function getList(isLoading = true) {
       error: null,
       isLoading
     })
-
+    //This query is found at 'api/src/modules/subscription/query.js/line#9'
     return axios.post(routeApi, query({
       operation: 'subscriptions',
       fields: ['id', 'user { name, email }', 'crate { id, name, description }', 'createdAt']
@@ -62,7 +62,7 @@ export function getListByUser(isLoading = true) {
       error: null,
       isLoading
     })
-
+    // This query is found at 'api/src/modules/subscriptions/query.js/line#15'
     return axios.post(routeApi, query({
       operation: 'subscriptionsByUser',
       fields: ['id', 'user { name, email }', 'crate { id, name, description }', 'createdAt']
@@ -96,7 +96,8 @@ export function get(slug, isLoading = true) {
       type: SUBSCRIPTIONS_GET_REQUEST,
       isLoading
     })
-
+    // This query is found at 'api/src/modules/subscription/query.js/line#21'
+    // ? It is strange that it shows variable of 'slug' when query.js method uses an 'id' as the argument?
     return axios.post(routeApi, query({
       operation: 'subscription',
       variables: { slug },
@@ -121,6 +122,7 @@ export function get(slug, isLoading = true) {
 }
 
 // Create subscription
+//This mutation is found in 'api/scr/modules/subscription/mutations.js/line#9'
 export function create(variables) {
   return dispatch => {
     return axios.post(routeApi, mutation({
@@ -132,6 +134,7 @@ export function create(variables) {
 }
 
 // Remove subscription
+//This mutation is found in 'api/scr/modules/subscription/mutations.js/line#21'
 export function remove(variables) {
   return dispatch => {
     return axios.post(routeApi, mutation({

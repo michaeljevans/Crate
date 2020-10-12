@@ -41,7 +41,7 @@ export async function getRelated(parentValue, { productId }) {
     order: [[models.Sequelize.fn('RANDOM')]] // mock related products by showing random products
   })
 }
-
+//This getRelated is not working because of 'Rand' function which is not recognized
 // Create product
 export async function create(parentValue, { name, slug, description, type, gender, image }, { auth }) {
   if(auth.user && auth.user.role === params.user.roles.admin) {
