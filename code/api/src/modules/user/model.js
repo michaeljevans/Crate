@@ -2,6 +2,8 @@
 
 // User
 module.exports = function(sequelize, DataTypes) {
+  // model of User data 
+  // defining data types for values
   let User = sequelize.define('users', {
     name: {
       type: DataTypes.STRING
@@ -18,6 +20,8 @@ module.exports = function(sequelize, DataTypes) {
   })
 
   User.associate = function(models) {
+    // User model is associated with the Subscription model
+    // a user can have many subscriptions(?)
     User.hasMany(models.Subscription)
   }
 

@@ -1,5 +1,9 @@
 'use strict';
 
+// seeders have the actual crate data 
+// crate data from this seeders file gets added to the crates table set out in the crate file in the migration directory
+// database is created from the seeders + migration files
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('crates', [

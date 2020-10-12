@@ -4,6 +4,11 @@ const bcrypt = require('bcrypt');
 const config = require('../config/server.json');
 const params = require('../config/params.json');
 
+// seeders have the actual data 
+// user data from seeders file gets added to the user table set out in the user file in the migration directory
+// database is created from the seeders + migration files
+// I think this database creates the database schema(?)
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('users', [
