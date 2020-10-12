@@ -16,6 +16,7 @@ import userRoutes from '../../setup/routes/user'
 import { logout } from './api/actions'
 
 // Component
+// NOTE: This is the users profile. Add users style to display (if they've taken survey).
 const Profile = (props) => (
   <div>
     {/* SEO */}

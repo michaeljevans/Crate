@@ -27,6 +27,7 @@ export function register(userDetails) {
 }
 
 // Login a user using credentials
+// NOTE: If there’s a token / user, dispatch them to `setUser()` saves user bearer token into axios headers for future requests.
 export function login(userCredentials, isLoading = true) {
   return dispatch => {
     dispatch({

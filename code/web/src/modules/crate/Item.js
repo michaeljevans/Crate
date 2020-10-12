@@ -18,6 +18,9 @@ import { messageShow, messageHide } from '../common/api/actions'
 import { create } from '../subscription/api/actions'
 
 // Component
+/* NOTE: This is where the Subscribe button is rendered. 
+Need to add logic that checks if user has already taken survey 
+and then redirect user on button click based on that. */
 class Item extends PureComponent {
 
   constructor(props) {

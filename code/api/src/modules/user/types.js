@@ -18,6 +18,8 @@ const UserType = new GraphQLObjectType({
 })
 
 // User Login type
+// NOTE: Creates `const userLogin` Type: UserLoginType  (id, name, email, password, role, timestamps and token). Sequelize queries the User Table in the database with findOne(email) Sequelize creates a var called userDetails using user.get() - passwordMatch is created by bcrypt.compare(password, userDetails.password)
+
 const UserLoginType = new GraphQLObjectType({
   name: 'userAuth',
   description: 'User Authentication Type',

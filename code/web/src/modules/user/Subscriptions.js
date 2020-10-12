@@ -16,6 +16,9 @@ import EmptyMessage from '../common/EmptyMessage'
 import SubscriptionItem from '../subscription/Item'
 
 // Component
+/* NOTE: This is the users Subscriptions page. Add users style to display (if they've taken survey)
+componentDidMount: Posts a query for all subscriptions
+Add Headings (Format > Paragraph styles) and they will appear in your table of contents. */
 class Subscriptions extends PureComponent {
 
   // Runs on server only for SSR

@@ -2,6 +2,7 @@
 import Sequelize from 'sequelize'
 
 // App Imports
+// NOTE: Add Style Survey modules with model, mutations, query, resolvers, and types files to modules directory
 import databaseConnection from './database'
 
 const models = {

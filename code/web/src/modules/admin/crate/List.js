@@ -28,6 +28,11 @@ class List extends PureComponent {
   }
 
   // Runs on client only
+  /* NOTE: GET_LIST_REQUEST via getCrateList import from `admin/crate/api`, 
+  Axios post query ‘crates’. ‘ASC’ or ‘DESC’ / ascending or descending, 
+  variables -> other values can work (`api/src/modules/crate/resolvers.js line 19`)
+  Returns id, name, description, createdAt, and updatedAt */
+
   componentDidMount() {
     this.props.getCrateList('DESC')
   }

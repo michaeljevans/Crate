@@ -15,6 +15,8 @@ export const LOGOUT = 'AUTH/LOGOUT'
 // Actions
 
 // Set a user after login or using localStorage token
+// NOTE: I believe this is using a cookie to store the user data.
+// will want to eventually add a style attribute to the user model
 export function setUser(token, user) {
   if (token) {
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
@@ -26,13 +28,14 @@ export function setUser(token, user) {
 }
 
 // Login a user using credentials
+// Login request, sent to the backend
 export function login(userCredentials, isLoading = true) {
   return dispatch => {
     dispatch({
       type: LOGIN_REQUEST,
       isLoading
     })
-
+    // Axios seems to work very similarly to the Faraday gem in Ruby
     return axios.post(routeApi, query({
       operation: 'userLogin',
       variables: userCredentials,
@@ -109,6 +112,8 @@ export function logoutUnsetUserLocalStorageAndCookie() {
 }
 
 // Get user gender
+// NOTE: Separate API call to get just a user's gender (this could be in the user object returned for use on pages after authentication, and perhaps we wouldn't have to make a second call for one value.')
+
 export function getGenders() {
   return dispatch => {
     return axios.post(routeApi, query({

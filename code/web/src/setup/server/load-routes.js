@@ -16,6 +16,7 @@ import { setUser } from '../../modules/user/api/actions'
 import App from '../client/App'
 import view from '../server/view'
 
+// NOTE: This seems to house the React app
 export default function (app) {
   console.info('SETUP - Load routes..')
 

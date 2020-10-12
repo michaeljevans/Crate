@@ -23,6 +23,10 @@ import { login } from './api/actions'
 import AuthCheck from '../auth/AuthCheck'
 
 // Component
+// NOTE: Login button, login form below. AUTH/LOGIN_REQUEST - Dispatch does error handling / displays a message
+// Returns an axios.POST which queries userLogin (`api/modules/user/query.js line 24`) providing userCredentials as args, requesting name / email / role / token. How do we use the token to preserve login between queries?
+
+
 class Login extends Component {
 
   constructor(props) {

@@ -22,6 +22,7 @@ if (token && token !== 'undefined' && token !== '') {
   }
 }
 
+// NOTE: <Provider> and the React App are launched here
 // Client App
 const Client = () => (
   <Provider store={store} key="provider">

@@ -15,6 +15,7 @@ export async function getById(parentValue, { crateId }) {
 }
 
 // Get all crates
+// NOTE: used on FE on the route ‘/crates’ and renders a List component ‘modules/crate/List`
 export async function getAll(parentValue, { orderBy }) {
   return await models.Crate.findAll({ order: [['id', orderBy]] })
 }

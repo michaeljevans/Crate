@@ -21,6 +21,7 @@ export const user = {
 }
 
 // Auth
+// NOTE: This allows authentication. Is a UserLoginType (`api/src/modules/user/type.js) containing user (id, name, email, password, role, timestamps) and token. This happens (is resolved) by the ‘login’ method in `api/src/modules/user/resolvers.js/line#30
 export const userLogin = {
   type: UserLoginType,
   args: {
