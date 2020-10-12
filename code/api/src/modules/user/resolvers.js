@@ -29,9 +29,10 @@ export async function create(parentValue, { name, email, password }) {
 }
 
 // login method takes email and password as arguments
-// sequelize then queries the User Model in the database with the findOne method (using email as arg)
-// if this query fails to return a user with that email then an error message will be thrown
-// if the findOne method does return a User with that email then sequelize creates a variable called userDetails using user.get()
+// sequelize then queries the User Model in the database with the findOne method (using email as argument)
+// sequelize uses promises to control async control-flow
+// if this promise fails to return a user with that email then an error message will be thrown
+// if the promise response does return a User with that email then sequelize creates a variable called userDetails using user.get()
 export async function login(parentValue, { email, password }) {
   const user = await models.User.findOne({ where: { email } })
 
