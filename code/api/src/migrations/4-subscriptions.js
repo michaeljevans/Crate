@@ -1,3 +1,4 @@
+// Subscriptions are a 'joins' table referencing users and crates
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('subscriptions', {

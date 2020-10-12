@@ -30,6 +30,7 @@ export async function getByUser(parentValue, {}, { auth }) {
 }
 
 // Get all subscriptions
+// In GraphQL this method is used with const subscriptions
 export async function getAll() {
   return await models.Subscription.findAll({
     include: [

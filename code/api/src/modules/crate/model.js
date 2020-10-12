@@ -16,3 +16,4 @@ module.exports = function(sequelize, DataTypes) {
 
   return Crate
 }
+// Interesting that DataTypes for 'id' and timestamps for crates are not set here.

@@ -1,6 +1,8 @@
 // Imports
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
+// This jsonwebtoken turns the user details into an encrypted hash that is stored as a cookie
+// when a user is logged in. 
 
 // App Imports
 import serverConfig from '../../config/server'
@@ -11,7 +13,7 @@ import models from '../../setup/models'
 export async function create(parentValue, { name, email, password }) {
   // Users exists with same email check
   const user = await models.User.findOne({ where: { email } })
-
+  //findOne is Sequelize method. In this case it is looking for email in database that already exists 
   if (!user) {
     // User does not exists
     const passwordHashed = await bcrypt.hash(password, serverConfig.saltRounds)
@@ -70,7 +72,7 @@ export async function getAll() {
 
 // Delete
 export async function remove(parentValue, { id }) {
-  return await models.User.destroy({ where: { id } })
+  return await models.User.destroy({ where: { id } }) 
 }
 
 // User genders

@@ -12,6 +12,8 @@ export const crates = {
     orderBy: { type: GraphQLString }
   },
   resolve: getAll
+  // orderBy can take 'DESC' or 'ASC' as agruments. 
+  // In the getAll resolver method crates are ordered by 'id'
 }
 
 // Crate By ID
