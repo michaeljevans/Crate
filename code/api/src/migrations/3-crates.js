@@ -1,3 +1,5 @@
+// This file creates the Crates table in database
+// How can you run the 'down:' method? 
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('crates', {

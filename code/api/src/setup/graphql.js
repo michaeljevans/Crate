@@ -15,7 +15,7 @@ export default function (server) {
   // API (GraphQL on route `/`)
   server.use(serverConfig.graphql.endpoint, graphqlHTTP(request => ({
     schema,
-    graphiql: serverConfig.graphql.ide,
+    graphiql: serverConfig.graphql.ide, //remove this line when running for app real
     pretty: serverConfig.graphql.pretty,
     context: {
       auth: {
