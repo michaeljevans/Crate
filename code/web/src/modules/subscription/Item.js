@@ -43,7 +43,7 @@ class Item extends PureComponent {
             this.props.messageShow(response.data.errors[0].message)
           } else {
             this.props.messageShow('Unsubscribed successfully.')
-
+            // dispatches GET_LIST_BY_USER_RESPONSE action to fetch updated list of subscriptions
             this.props.getListByUser()
           }
         })
@@ -63,6 +63,7 @@ class Item extends PureComponent {
   }
 
   render() {
+    // using destructuring to access the id, crate, and createdAt properties from subscription object in store
     const { id, crate, createdAt } = this.props.subscription
     const { isLoading } = this.state
 
@@ -108,6 +109,7 @@ Item.propTypes = {
 }
 
 // Component State
+// accessing user data from store
 function itemState(state) {
   return {
     user: state.user
