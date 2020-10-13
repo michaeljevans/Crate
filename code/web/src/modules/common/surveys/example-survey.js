@@ -1,5 +1,3 @@
-// import image from '../../../../public/images/joke-shirt.jpg'
-
 export const testSurvey = [{
   question: 'Which shirt would make you feel the most confident at work?',
   images: [{
