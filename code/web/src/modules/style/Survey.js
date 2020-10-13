@@ -4,16 +4,17 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Link, withRouter } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
+// import { Grid, GridCell} from '../../ui/grid'
 
 // UI Imports
-// import { Grid, GridCell } from '../../ui/grid'
+import { Grid, GridCell } from '../../ui/grid'
 // import Button from '../../ui/button'
 // import ImageTile from '../../ui/image/Tile'
 // import Input from '../../ui/input/Input'
-// import H3 from '../../ui/typography/H3'
+import H3 from '../../ui/typography/H3'
 // import Icon from '../../ui/icon'
 // import { level1 } from '../../ui/common/shadows'
-// import { white } from '../../ui/common/colors'
+import { grey } from '../../ui/common/colors'
 
 // App Imports
 import { APP_URL } from '../../setup/config/env'
@@ -26,10 +27,10 @@ class Survey extends Component {
   }
 
   buildSurvey = () => {
-    testSurvey.map(question => {
+    survey.map(question => {
       <div>
         <h2>question.question</h2>
-        {question.answers.map(answer => {
+        {question.images.map(answer => {
           <img src={APP_URL + answer.src} alt={answer.description} />
         })}
       </div>
@@ -52,11 +53,11 @@ class Survey extends Component {
         </Grid>
 
         <Grid>
-          <gridCell>
+          <GridCell>
             {
               this.buildSurvey()
             }
-          </gridCell>
+          </GridCell>
         </Grid>
 
       </div>
