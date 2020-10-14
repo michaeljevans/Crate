@@ -11,7 +11,7 @@ import Card from '../../ui/card/Card'
 import Button from '../../ui/button/Button'
 import H3 from '../../ui/typography/H3'
 import H4 from '../../ui/typography/H4'
-import { black, white, grey } from '../../ui/common/colors'
+import { primary, grey, white, black } from '../../ui/common/colors'
 
 // App Imports
 import { APP_URL } from '../../setup/config/env'
@@ -35,7 +35,7 @@ class Survey extends Component {
   buildSurvey = () => {
     const { survey } = this.state
     return survey.map((question, i) => (
-      <Card key={`question-${i}`}style={{width: '75em', margin: '2.5em auto', backgroundColor: white }}>
+      <Card key={`question-${i}`} style={{width: '75em', margin: '2.5em auto', backgroundColor: white }}>
           <H4 font="secondary" style={{ color: black }}>{question.question}</H4>
           {question.images.map((option, j) => (
             <img 
@@ -67,7 +67,7 @@ class Survey extends Component {
       border: ''
     }
     if (answer === selection) {
-      imgStyle.border = '4px solid #000000'
+      imgStyle.border = `10px solid ${primary}`
     }
     return imgStyle
   }
