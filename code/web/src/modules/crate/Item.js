@@ -14,7 +14,7 @@ import { white, grey2, black } from '../../ui/common/colors'
 // App Imports
 import { APP_URL } from '../../setup/config/env'
 import userRoutes from '../../setup/routes/user'
-import style from '../../setup/routes/style'
+import styleSurvey from '../../setup/routes/styleSurvey'
 import { messageShow, messageHide } from '../common/api/actions'
 import { create } from '../subscription/api/actions'
 
@@ -31,7 +31,7 @@ class Item extends PureComponent {
 
   handleClick = (crateId) => {
     if (!this.props.user.style) {
-      this.props.history.push(style.survey.path)
+      this.props.history.push(styleSurvey.survey.path)
     } else {
       this.subscribeUserToCrate(crateId)
     }
