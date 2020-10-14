@@ -29,6 +29,7 @@
     "babel-loader": "8.1.0",
     "dotenv-webpack": "^1.7.0",
     "nodemon": "2.0.3",
+    "redux-devtools-extension": "^2.13.8",
     "webpack": "4.42.1",
     "webpack-cli": "3.3.11"
   },
