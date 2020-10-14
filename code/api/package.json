@@ -12,7 +12,8 @@
     "start": "nodemon src/index.js --exec babel-node",
     "start:prod": "npm run build:prod && npm run start:server",
     "build:prod": "babel src -s -D -d build",
-    "start:server": "node build/index.js"
+    "start:server": "node build/index.js",
+    "test": "jest --watch --runInBand --detectOpenHandles"
   },
   "keywords": [],
   "author": "",
@@ -23,7 +24,9 @@
     "@babel/node": "7.8.7",
     "@babel/plugin-transform-runtime": "7.9.0",
     "@babel/preset-env": "7.9.5",
-    "nodemon": "2.0.3"
+    "jest": "^26.5.3",
+    "nodemon": "2.0.3",
+    "supertest": "^5.0.0"
   },
   "dependencies": {
     "@babel/runtime": "7.9.2",
