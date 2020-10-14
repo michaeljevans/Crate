@@ -73,7 +73,18 @@ export async function login(parentValue, { email, password }) {
     }
   }
 }
-
+export async function updateUser(parentValue, { id, style }, { auth }) {
+  if (auth.user && auth.user.role === params.user.roles.user) {
+    return await models.User.update(
+      {
+        style
+      },
+      { where: { id } }
+    )
+  } else {
+    throw new Error('Operation denied.')
+  }
+}
 // Get by ID
 export async function getById(parentValue, { id }) {
   return await models.User.findOne({ where: { id } })
