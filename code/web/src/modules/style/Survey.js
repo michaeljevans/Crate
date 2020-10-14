@@ -37,6 +37,7 @@ class Survey extends Component {
           {question.images.map((option, j) => (
             <img 
               style={this.outlineSelection(option.value, question.answer)}
+              style={{width: '14em', height: '20em'}}
               key={`option-${i}-${j}`}
               src={APP_URL + option.src} 
               alt={option.description} 
