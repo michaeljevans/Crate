@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "postgres",
-    "password": null,
+    "password": "4rft67",
     "database": "crate",
     "host": "127.0.0.1",
     "dialect": "postgres",
