@@ -1,0 +1,238 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`User Reducer Should handle a login request 1`] = `
+Object {
+  "common": Object {
+    "message": Object {
+      "open": false,
+      "text": null,
+    },
+  },
+  "crate": Object {
+    "error": null,
+    "isLoading": false,
+    "item": Object {},
+  },
+  "crates": Object {
+    "error": null,
+    "isLoading": false,
+    "list": Array [],
+  },
+  "product": Object {
+    "error": null,
+    "isLoading": false,
+    "item": Object {},
+  },
+  "products": Object {
+    "error": null,
+    "isLoading": false,
+    "list": Array [],
+  },
+  "productsRelated": Object {
+    "error": null,
+    "isLoading": false,
+    "list": Array [],
+    "productId": 0,
+  },
+  "subscription": Object {
+    "error": null,
+    "isLoading": false,
+    "item": Object {},
+  },
+  "subscriptions": Object {
+    "error": null,
+    "isLoading": false,
+    "list": Array [],
+  },
+  "subscriptionsByUser": Object {
+    "error": null,
+    "isLoading": false,
+    "list": Array [],
+  },
+  "user": Object {
+    "details": null,
+    "error": null,
+    "isAuthenticated": false,
+    "isLoading": true,
+  },
+}
+`;
+
+exports[`User Reducer Should handle a login response 1`] = `
+Object {
+  "common": Object {
+    "message": Object {
+      "open": false,
+      "text": null,
+    },
+  },
+  "crate": Object {
+    "error": null,
+    "isLoading": false,
+    "item": Object {},
+  },
+  "crates": Object {
+    "error": null,
+    "isLoading": false,
+    "list": Array [],
+  },
+  "product": Object {
+    "error": null,
+    "isLoading": false,
+    "item": Object {},
+  },
+  "products": Object {
+    "error": null,
+    "isLoading": false,
+    "list": Array [],
+  },
+  "productsRelated": Object {
+    "error": null,
+    "isLoading": false,
+    "list": Array [],
+    "productId": 0,
+  },
+  "subscription": Object {
+    "error": null,
+    "isLoading": false,
+    "item": Object {},
+  },
+  "subscriptions": Object {
+    "error": null,
+    "isLoading": false,
+    "list": Array [],
+  },
+  "subscriptionsByUser": Object {
+    "error": null,
+    "isLoading": false,
+    "list": Array [],
+  },
+  "user": Object {
+    "details": null,
+    "error": undefined,
+    "isAuthenticated": false,
+    "isLoading": false,
+  },
+}
+`;
+
+exports[`User Reducer Should return the initial state for user 1`] = `
+Object {
+  "common": Object {
+    "message": Object {
+      "open": false,
+      "text": null,
+    },
+  },
+  "crate": Object {
+    "error": null,
+    "isLoading": false,
+    "item": Object {},
+  },
+  "crates": Object {
+    "error": null,
+    "isLoading": false,
+    "list": Array [],
+  },
+  "product": Object {
+    "error": null,
+    "isLoading": false,
+    "item": Object {},
+  },
+  "products": Object {
+    "error": null,
+    "isLoading": false,
+    "list": Array [],
+  },
+  "productsRelated": Object {
+    "error": null,
+    "isLoading": false,
+    "list": Array [],
+    "productId": 0,
+  },
+  "subscription": Object {
+    "error": null,
+    "isLoading": false,
+    "item": Object {},
+  },
+  "subscriptions": Object {
+    "error": null,
+    "isLoading": false,
+    "list": Array [],
+  },
+  "subscriptionsByUser": Object {
+    "error": null,
+    "isLoading": false,
+    "list": Array [],
+  },
+  "user": Object {
+    "details": null,
+    "error": null,
+    "isAuthenticated": false,
+    "isLoading": false,
+  },
+}
+`;
+
+exports[`User Reducer Should set a new user 1`] = `
+Object {
+  "common": Object {
+    "message": Object {
+      "open": false,
+      "text": null,
+    },
+  },
+  "crate": Object {
+    "error": null,
+    "isLoading": false,
+    "item": Object {},
+  },
+  "crates": Object {
+    "error": null,
+    "isLoading": false,
+    "list": Array [],
+  },
+  "product": Object {
+    "error": null,
+    "isLoading": false,
+    "item": Object {},
+  },
+  "products": Object {
+    "error": null,
+    "isLoading": false,
+    "list": Array [],
+  },
+  "productsRelated": Object {
+    "error": null,
+    "isLoading": false,
+    "list": Array [],
+    "productId": 0,
+  },
+  "subscription": Object {
+    "error": null,
+    "isLoading": false,
+    "item": Object {},
+  },
+  "subscriptions": Object {
+    "error": null,
+    "isLoading": false,
+    "list": Array [],
+  },
+  "subscriptionsByUser": Object {
+    "error": null,
+    "isLoading": false,
+    "list": Array [],
+  },
+  "user": Object {
+    "details": Object {
+      "email": "user@crate.com",
+      "name": "The User",
+      "role": "USER",
+    },
+    "error": null,
+    "isAuthenticated": true,
+    "isLoading": false,
+    "style": null,
+  },
+}
+`;
