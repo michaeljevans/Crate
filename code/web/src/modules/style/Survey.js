@@ -15,24 +15,53 @@ import { black, white, grey } from '../../ui/common/colors'
 // App Imports
 import { APP_URL } from '../../setup/config/env'
 import { messageShow, messageHide } from '../common/api/actions'
-import {testSurvey as survey} from '../../../src/modules/common/surveys/example-survey'
+import {testSurvey} from '../../../src/modules/common/surveys/example-survey'
 
 class Survey extends Component {
   constructor(props) {
     super(props) 
+    this.state = {
+      survey: testSurvey
+    }
   }
 
+  
   buildSurvey = () => {
-    return survey.map(question => (
-        <Card style={{width: '75em', margin: '2.5em auto', backgroundColor: white }}>
+    return this.state.survey.map((question, i) => (
+      <Card style={{width: '75em', margin: '2.5em auto', backgroundColor: white }}>
           <H4 font="secondary" style={{ color: black }}>{question.question}</H4>
-          {question.images.map(answer => (
-            <img src={APP_URL + answer.src} alt={answer.description} />
-          ))}
+          {question.images.map(option => (
+            <img 
+              style={this.outlineSelection(option.value, question.answer)}
+              src={APP_URL + option.src} 
+              alt={option.description} 
+              onClick={() => {
+                this.trackAnswers(i, option.value)
+              }} 
+            />
+            ))}
         </Card>
       )
-    )
-  }
+      )
+    }
+    
+    trackAnswers = (questionIndex, answer) => {
+      console.log(answer)
+      const updatedSurvey = this.state.survey
+      updatedSurvey[questionIndex].answer = answer
+      this.setState({survey: updatedSurvey})
+    }
+
+    outlineSelection = (answer, selection) => {
+      const imgStyle = {
+        cursor: 'pointer',
+        border: ''
+      }
+      if (answer === selection) {
+        imgStyle.border = '4px solid #000000'
+      }
+      return imgStyle
+    }
 
   render() {
     return (
