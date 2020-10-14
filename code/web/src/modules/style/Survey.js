@@ -8,6 +8,7 @@ import { Helmet } from 'react-helmet'
 // UI Imports
 import { Grid, GridCell } from '../../ui/grid'
 import Card from '../../ui/card/Card'
+import Button from '../../ui/button/Button'
 import H3 from '../../ui/typography/H3'
 import H4 from '../../ui/typography/H4'
 import { black, white, grey } from '../../ui/common/colors'
@@ -21,7 +22,8 @@ class Survey extends Component {
   constructor(props) {
     super(props) 
     this.state = {
-      survey: testSurvey
+      survey: testSurvey,
+      isLoading: false
     }
   }
 
@@ -63,6 +65,18 @@ class Survey extends Component {
       return imgStyle
     }
 
+    submitSurvey = () => {
+      if(this.hasMissingAnswers()) {
+        console.log('all good')
+      } else {
+        console.log('please finish')
+      }
+    }
+
+    hasMissingAnswers = () => (
+      this.state.survey.every(question => question.answer !== null)
+    )
+
   render() {
     return (
       <div>
@@ -82,6 +96,16 @@ class Survey extends Component {
             {
               this.buildSurvey()
             }
+          </GridCell>
+          <GridCell>
+            <Button
+              theme="primary"
+              onClick={this.submitSurvey}
+              type="button"
+              // disabled={ isLoading }
+            >
+              Submit
+            </Button>
           </GridCell>
         </Grid>
       </div>
