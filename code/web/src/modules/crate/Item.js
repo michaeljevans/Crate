@@ -2,7 +2,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Link, withRouter } from 'react-router-dom'
+import { Link, Redirect, withRouter } from 'react-router-dom'
 
 // UI Imports
 import Card from '../../ui/card/Card'
@@ -25,19 +25,23 @@ class Item extends PureComponent {
     super(props)
 
     this.state = {
-      isLoading: false
+      isLoading: false,
+      surveyRedirect: false
     }
   }
 
   handleClick = (crateId) => {
     if (!this.props.user.style) {
-      this.props.history.push(styleSurvey.survey.path)
+      this.setState({ 
+        surveyRedirect: true
+      }) 
+      // this.props.history.push(styleSurvey.survey.path)
     } else {
       this.subscribeUserToCrate(crateId)
     }
   }
 
-  subscribeUserToCrate = (crateId) => {
+  static subscribeUserToCrate = (crateId) => {
     this.setState({
       isLoading: true
     })
@@ -70,7 +74,7 @@ class Item extends PureComponent {
 
   render() {
     const { id, name, description } = this.props.crate
-    const { isLoading } = this.state
+    const { isLoading, surveyRedirect } = this.state
 
     return (
       <Card style={{ width: '18em', backgroundColor: white }}>
@@ -94,6 +98,13 @@ class Item extends PureComponent {
             </Button>
           </p>
         </div>
+        {surveyRedirect && 
+          <Redirect to ={{
+            pathname: "/style-preferences",
+            state: {crateId: id}
+          }}
+          />
+        }
       </Card>
     )
   }
