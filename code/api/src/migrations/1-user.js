@@ -22,6 +22,9 @@ module.exports = {
       role: {
         type: Sequelize.TEXT
       },
+      style: {
+        type: Sequelize.TEXT
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
