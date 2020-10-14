@@ -112,16 +112,19 @@ class Survey extends Component {
               this.buildSurvey()
             }
           </GridCell>
-          <GridCell>
-            <Button
-              theme="primary"
-              onClick={this.submitSurvey}
-              type="button"
-              disabled={ isLoading }
-            >
-              Submit
-            </Button>
-          </GridCell>
+          {/* <GridCell> */}
+          {/* </GridCell> */}
+        </Grid>
+        <Grid>
+          <Button
+            style={{margin: '2em auto'}}
+            theme="primary"
+            onClick={this.submitSurvey}
+            type="button"
+            disabled={ isLoading }
+          >
+            Submit
+          </Button>
         </Grid>
         {submitted && <Redirect to={routes.subscriptions.path}/>}
       </div>
@@ -130,9 +133,9 @@ class Survey extends Component {
 }
 
 Survey.propTypes = {
+  create: PropTypes.func.isRequired,
   messageShow: PropTypes.func.isRequired,
   messageHide: PropTypes.func.isRequired
-
 }
 
 export default connect(null, {create, messageShow, messageHide})(withRouter(Survey))
