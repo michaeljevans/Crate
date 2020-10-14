@@ -1,9 +1,9 @@
 // Imports
 import React, { Component } from 'react'
+import { Helmet } from 'react-helmet'
+import { Redirect, withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Link, withRouter } from 'react-router-dom'
-import { Helmet } from 'react-helmet'
 
 // UI Imports
 import { Grid, GridCell } from '../../ui/grid'
@@ -17,24 +17,27 @@ import { black, white, grey } from '../../ui/common/colors'
 import { APP_URL } from '../../setup/config/env'
 import { messageShow, messageHide } from '../common/api/actions'
 import {testSurvey} from '../../../src/modules/common/surveys/example-survey'
+import { routes } from '../../setup/routes/'
 
 class Survey extends Component {
   constructor(props) {
     super(props) 
     this.state = {
       survey: testSurvey,
+      submitted: false,
       isLoading: false
     }
   }
 
-  
   buildSurvey = () => {
-    return this.state.survey.map((question, i) => (
-      <Card style={{width: '75em', margin: '2.5em auto', backgroundColor: white }}>
+    const { survey } = this.state
+    return survey.map((question, i) => (
+      <Card key={`question-${i}`}style={{width: '75em', margin: '2.5em auto', backgroundColor: white }}>
           <H4 font="secondary" style={{ color: black }}>{question.question}</H4>
-          {question.images.map(option => (
+          {question.images.map((option, j) => (
             <img 
               style={this.outlineSelection(option.value, question.answer)}
+              key={`option-${i}-${j}`}
               src={APP_URL + option.src} 
               alt={option.description} 
               onClick={() => {
@@ -44,40 +47,46 @@ class Survey extends Component {
             ))}
         </Card>
       )
-      )
-    }
-    
-    trackAnswers = (questionIndex, answer) => {
-      console.log(answer)
-      const updatedSurvey = this.state.survey
-      updatedSurvey[questionIndex].answer = answer
-      this.setState({survey: updatedSurvey})
-    }
-
-    outlineSelection = (answer, selection) => {
-      const imgStyle = {
-        cursor: 'pointer',
-        border: ''
-      }
-      if (answer === selection) {
-        imgStyle.border = '4px solid #000000'
-      }
-      return imgStyle
-    }
-
-    submitSurvey = () => {
-      if(this.hasMissingAnswers()) {
-        console.log('all good')
-      } else {
-        console.log('please finish')
-      }
-    }
-
-    hasMissingAnswers = () => (
-      this.state.survey.every(question => question.answer !== null)
     )
+  }
+    
+  trackAnswers = (questionIndex, answer) => {
+    const { survey } = this.state
+    survey[questionIndex].answer = answer
+    this.setState({survey: survey})
+  }
 
+  outlineSelection = (answer, selection) => {
+    const imgStyle = {
+      cursor: 'pointer',
+      border: ''
+    }
+    if (answer === selection) {
+      imgStyle.border = '4px solid #000000'
+    }
+    return imgStyle
+  }
+
+  submitSurvey = () => {
+    if(this.hasMissingAnswers()) {
+      console.log(routes.subscriptions)
+      // set state isLoading = true
+      // post goes here
+      this.setState({submitted: true})
+    } else {
+      this.props.messageShow('Please answer each question in the survey submitting')
+      window.setTimeout(() => {
+        this.props.messageHide()
+      }, 5000)
+    }
+  }
+
+  hasMissingAnswers = () => (
+    this.state.survey.every(question => question.answer !== null)
+  )
+  
   render() {
+    const { isLoading, submitted } = this.state
     return (
       <div>
         <Helmet>
@@ -87,10 +96,9 @@ class Survey extends Component {
         <Grid style={{ backgroundColor: grey }}>
           <GridCell style={{ padding: '2em', textAlign: 'center' }}>
             <H3 font="secondary">Tell us about your style!</H3>
-            {/* <p style={{ marginTop: '1em', color: grey2 }}>You can choose crate which suits your need. You can also */}
-              {/* subscribe to multiple crates.</p> */}
           </GridCell>
         </Grid>
+
         <Grid>
           <GridCell>
             {
@@ -102,20 +110,22 @@ class Survey extends Component {
               theme="primary"
               onClick={this.submitSurvey}
               type="button"
-              // disabled={ isLoading }
+              disabled={ isLoading }
             >
               Submit
             </Button>
           </GridCell>
         </Grid>
+        {submitted && <Redirect to={routes.subscriptions.path}/>}
       </div>
     )
   }
 }
 
 Survey.propTypes = {
-
+  messageShow: PropTypes.func.isRequired,
+  messageHide: PropTypes.func.isRequired
 }
 
-export default connect(null, {})(withRouter(Survey))
+export default connect(null, {messageShow, messageHide})(withRouter(Survey))
 
