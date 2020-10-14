@@ -19,6 +19,8 @@ import { messageShow, messageHide } from '../common/api/actions'
 import { mensSurvey } from '../../../src/modules/common/surveys/men-survey'
 // import { womensSurvey } from '../../../src/modules/common/surveys/women-survey'
 import { routes } from '../../setup/routes/'
+import { create } from '../subscription/api/actions'
+import Item from '../crate/Item'
 
 class Survey extends Component {
   constructor(props) {
@@ -71,11 +73,13 @@ class Survey extends Component {
   }
 
   submitSurvey = () => {
-    if(this.hasMissingAnswers()) {
+    if(this.hasNoMissingAnswers()) {
       console.log(routes.subscriptions)
+      Item.subscribeUserToCrate(this.props.location.state.crateId, this)
+      .then(() => this.setState({submitted: true}))
       // set state isLoading = true
       // post goes here
-      this.setState({submitted: true})
+      
     } else {
       this.props.messageShow('Please answer each question in the survey submitting')
       window.setTimeout(() => {
@@ -84,7 +88,7 @@ class Survey extends Component {
     }
   }
 
-  hasMissingAnswers = () => (
+  hasNoMissingAnswers = () => (
     this.state.survey.every(question => question.answer !== null)
   )
   
@@ -128,7 +132,8 @@ class Survey extends Component {
 Survey.propTypes = {
   messageShow: PropTypes.func.isRequired,
   messageHide: PropTypes.func.isRequired
+
 }
 
-export default connect(null, {messageShow, messageHide})(withRouter(Survey))
+export default connect(null, {create, messageShow, messageHide})(withRouter(Survey))
 
