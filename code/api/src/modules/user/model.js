@@ -12,6 +12,9 @@ module.exports = function(sequelize, DataTypes) {
     password: {
       type: DataTypes.TEXT
     },
+    style: {
+      type: DataTypes.TEXT
+    },
     role: {
       type: DataTypes.TEXT
     }
