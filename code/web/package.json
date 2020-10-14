@@ -29,9 +29,11 @@
     "@storybook/addon-actions": "^6.0.26",
     "@storybook/addons": "^5.3.18",
     "@storybook/react": "^5.3.18",
+    "@testing-library/jest-dom": "^5.11.4",
     "babel-loader": "8.1.0",
     "dotenv-webpack": "^1.7.0",
     "jest": "^26.5.3",
+    "jest-environment-jsdom-sixteen": "^1.0.3",
     "nodemon": "2.0.3",
     "redux-devtools-extension": "^2.13.8",
     "webpack": "4.42.1",
@@ -39,6 +41,7 @@
   },
   "dependencies": {
     "@babel/runtime": "7.9.2",
+    "@testing-library/react": "^11.1.0",
     "axios": "0.19.2",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",
@@ -54,6 +57,7 @@
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.1.2",
     "redux": "^4.0.5",
+    "redux-mock-store": "^1.5.4",
     "redux-thunk": "^2.3.0",
     "styled-jsx": "3.2.5",
     "validator": "13.0.0"
