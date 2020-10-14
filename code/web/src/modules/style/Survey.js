@@ -16,14 +16,14 @@ import { black, white, grey } from '../../ui/common/colors'
 // App Imports
 import { APP_URL } from '../../setup/config/env'
 import { messageShow, messageHide } from '../common/api/actions'
-import {testSurvey} from '../../../src/modules/common/surveys/example-survey'
+import { mensSurvey } from '../../../src/modules/common/surveys/men-survey'
 import { routes } from '../../setup/routes/'
 
 class Survey extends Component {
   constructor(props) {
     super(props) 
     this.state = {
-      survey: testSurvey,
+      survey: mensSurvey,
       submitted: false,
       isLoading: false
     }
