@@ -14,6 +14,7 @@ import { white, grey2, black } from '../../ui/common/colors'
 // App Imports
 import { APP_URL } from '../../setup/config/env'
 import userRoutes from '../../setup/routes/user'
+import style from '../../setup/routes/style'
 import { messageShow, messageHide } from '../common/api/actions'
 import { create } from '../subscription/api/actions'
 
@@ -28,14 +29,22 @@ class Item extends PureComponent {
     }
   }
 
-  onClickSubscribe = (crateId) => {
+  handleClick = (crateId) => {
+    if (!this.props.user.style) {
+      this.props.history.push(style.survey.path)
+    } else {
+      this.subscribeUserToCrate(crateId)
+    }
+  }
+
+  subscribeUserToCrate = (crateId) => {
     this.setState({
       isLoading: true
     })
 
     this.props.messageShow('Subscribing, please wait...')
-
     this.props.create({ crateId })
+    
       .then(response => {
         if (response.data.errors && response.data.errors.length > 0) {
           this.props.messageShow(response.data.errors[0].message)
@@ -45,18 +54,18 @@ class Item extends PureComponent {
           this.props.history.push(userRoutes.subscriptions.path)
         }
       })
-      .catch(error => {
-        this.props.messageShow('There was some error subscribing to this crate. Please try again.')
+    .catch(error => {
+      this.props.messageShow('There was some error subscribing to this crate. Please try again.')
+    })
+    .then(() => {
+      this.setState({
+        isLoading: false
       })
-      .then(() => {
-        this.setState({
-          isLoading: false
-        })
 
-        window.setTimeout(() => {
-          this.props.messageHide()
-        }, 5000)
-      })
+      window.setTimeout(() => {
+        this.props.messageHide()
+      }, 5000)
+    })
   }
 
   render() {
@@ -77,7 +86,7 @@ class Item extends PureComponent {
           <p style={{ textAlign: 'center', marginTop: '1.5em', marginBottom: '1em' }}>
             <Button
               theme="primary"
-              onClick={this.onClickSubscribe.bind(this, id)}
+              onClick={this.handleClick.bind(this, id)}
               type="button"
               disabled={ isLoading }
             >
