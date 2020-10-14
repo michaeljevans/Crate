@@ -16,6 +16,9 @@ module.exports = {
       password: {
         type: Sequelize.TEXT
       },
+      style: {
+        type: Sequelize.TEXT
+      },
       role: {
         type: Sequelize.TEXT
       },
