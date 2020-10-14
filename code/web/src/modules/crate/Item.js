@@ -41,33 +41,33 @@ class Item extends PureComponent {
     }
   }
 
-  static subscribeUserToCrate = (crateId) => {
-    this.setState({
+  static subscribeUserToCrate = (crateId, owner = this) => {
+    owner.setState({
       isLoading: true
     })
 
-    this.props.messageShow('Subscribing, please wait...')
-    this.props.create({ crateId })
+    owner.props.messageShow('Subscribing, please wait...')
+    owner.props.create({ crateId })
     
       .then(response => {
         if (response.data.errors && response.data.errors.length > 0) {
-          this.props.messageShow(response.data.errors[0].message)
+          owner.props.messageShow(response.data.errors[0].message)
         } else {
-          this.props.messageShow('Subscribed successfully.')
+          owner.props.messageShow('Subscribed successfully.')
 
-          this.props.history.push(userRoutes.subscriptions.path)
+          owner.props.history.push(userRoutes.subscriptions.path)
         }
       })
     .catch(error => {
-      this.props.messageShow('There was some error subscribing to this crate. Please try again.')
+      owner.props.messageShow('There was some error subscribing to this crate. Please try again.')
     })
     .then(() => {
-      this.setState({
+      owner.setState({
         isLoading: false
       })
 
       window.setTimeout(() => {
-        this.props.messageHide()
+        owner.props.messageHide()
       }, 5000)
     })
   }
