@@ -38,7 +38,7 @@ export async function getRelated(parentValue, { productId }) {
       id: { [models.Sequelize.Op.not]: productId }
     },
     limit: 3,
-    order: [[models.Sequelize.fn('RAND')]] // mock related products by showing random products
+    order: [[models.Sequelize.fn('RANDOM')]] // mock related products by showing random products
   })
 }
 
