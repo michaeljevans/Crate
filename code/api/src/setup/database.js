@@ -9,11 +9,21 @@ import databaseConfig from '../config/database.json'
 const databaseConfigEnv = databaseConfig[NODE_ENV]
 
 // Create new database connection
-const connection = new Sequelize(databaseConfigEnv.database, databaseConfigEnv.username, databaseConfigEnv.password, {
-  host: databaseConfigEnv.host,
-  dialect: databaseConfigEnv.dialect,
-  logging: false
-})
+var connection = null;
+
+if (process.env.DATABASE_URL) {
+  connection = new Sequelize(process.env.DATABASE_URL, {
+    dialect: 'postgres',
+    protocol: 'postgres',
+    logging: false
+  })
+} else {
+  connection = new Sequelize(databaseConfigEnv.database, databaseConfigEnv.username, databaseConfigEnv.password, {
+    host: databaseConfigEnv.host,
+    dialect: databaseConfigEnv.dialect,
+    logging: false
+  })
+}
 
 // Test connection
 console.info('SETUP - Connecting database...')
