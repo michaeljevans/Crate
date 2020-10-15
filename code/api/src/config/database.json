@@ -1,4 +1,12 @@
 {
+  "test": {
+    "username": "postgres",
+    "password": null,
+    "database": "crate_test",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "seederStorage": "sequelize"
+  },
   "development": {
     "username": "postgres",
     "password": "4rft67",
