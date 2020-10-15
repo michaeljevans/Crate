@@ -17,13 +17,14 @@ import { black, white, grey } from '../../ui/common/colors'
 import { APP_URL } from '../../setup/config/env'
 import { messageShow, messageHide } from '../common/api/actions'
 import { mensSurvey } from '../../../src/modules/common/surveys/men-survey'
+import { womensSurvey } from '../../../src/modules/common/surveys/women-survey'
 import { routes } from '../../setup/routes/'
 
 class Survey extends Component {
   constructor(props) {
     super(props) 
     this.state = {
-      survey: mensSurvey,
+      survey: womensSurvey,
       submitted: false,
       isLoading: false
     }
@@ -37,7 +38,8 @@ class Survey extends Component {
           {question.images.map((option, j) => (
             <img 
               style={this.outlineSelection(option.value, question.answer)}
-              style={{width: '14em', height: '20em'}}
+              width={'200em'}
+              height={'300em'}
               key={`option-${i}-${j}`}
               src={APP_URL + option.src} 
               alt={option.description} 
