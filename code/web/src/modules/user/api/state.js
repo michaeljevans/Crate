@@ -1,7 +1,7 @@
 // App Imports
 import { isEmpty } from '../../../setup/helpers'
 import { SET_USER, LOGIN_REQUEST, LOGIN_RESPONSE, LOGOUT } from './actions'
-import { SAVE_STYLE } from '../../style/api/actions'
+import { SAVE_STYLE, SURVEY_RESPONSE } from '../../style/api/actions'
 
 // Initial State
 export const userInitialState = {
