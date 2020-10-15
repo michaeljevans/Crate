@@ -21,6 +21,7 @@ import { mensSurvey } from '../../../src/modules/common/surveys/men-survey'
 import { routes } from '../../setup/routes/'
 import { create } from '../subscription/api/actions'
 import Item from '../crate/Item'
+import { sendSurvey } from './api/actions'
 
 class Survey extends Component {
   constructor(props) {
@@ -75,6 +76,7 @@ class Survey extends Component {
   submitSurvey = () => {
     if(this.hasNoMissingAnswers()) {
       console.log(routes.subscriptions)
+      // sendSurvey(this.state.survey)
       Item.subscribeUserToCrate(this.props.location.state.crateId, this)
       .then(() => this.setState({submitted: true}))
       // set state isLoading = true

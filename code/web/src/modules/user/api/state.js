@@ -1,6 +1,7 @@
 // App Imports
 import { isEmpty } from '../../../setup/helpers'
 import { SET_USER, LOGIN_REQUEST, LOGIN_RESPONSE, LOGOUT } from './actions'
+import { SAVE_STYLE } from '../../style/api/actions'
 
 // Initial State
 export const userInitialState = {
@@ -43,6 +44,21 @@ export default (state = userInitialState, action) => {
         isLoading: false,
         isAuthenticated: false,
         details: null
+      }
+    
+    case SAVE_STYLE: 
+      newDetails = state.user.details
+      newDetails.style = action.surveyResult
+      return {
+        ...state,
+        isLoading: false,
+        details: newDetails
+      }
+    
+    case SURVEY_RESPONSE: 
+      return {
+        ...state,
+        error: action.error
       }
 
     default:
