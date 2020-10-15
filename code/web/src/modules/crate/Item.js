@@ -17,6 +17,8 @@ import userRoutes from '../../setup/routes/user'
 import styleSurvey from '../../setup/routes/styleSurvey'
 import { messageShow, messageHide } from '../common/api/actions'
 import { create } from '../subscription/api/actions'
+import { mensSurvey } from '../../modules/common/surveys/men-survey'
+import { womensSurvey } from '../../modules/common/surveys/women-survey'
 
 // Component
 class Item extends PureComponent {
@@ -72,6 +74,14 @@ class Item extends PureComponent {
     })
   }
 
+  findGenderedSurvey = () => {
+    let { name } = this.props.crate
+    name = name.split(' ')
+    const gender = name[name.length - 1]
+
+    return gender === 'Men' ? mensSurvey : womensSurvey
+  }
+
   render() {
     const { id, name, description } = this.props.crate
     const { isLoading, surveyRedirect } = this.state
@@ -101,7 +111,7 @@ class Item extends PureComponent {
         {surveyRedirect && 
           <Redirect to ={{
             pathname: "/style-preferences",
-            state: {crateId: id}
+            state: {crateId: id, survey: this.findGenderedSurvey()}
           }}
           />
         }

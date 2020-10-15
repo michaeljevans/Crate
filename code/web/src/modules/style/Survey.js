@@ -16,25 +16,26 @@ import { primary, grey, white, black } from '../../ui/common/colors'
 // App Imports
 import { APP_URL } from '../../setup/config/env'
 import { messageShow, messageHide } from '../common/api/actions'
-import { mensSurvey } from '../../../src/modules/common/surveys/men-survey'
-// import { womensSurvey } from '../../../src/modules/common/surveys/women-survey'
 import { routes } from '../../setup/routes/'
 import { create } from '../subscription/api/actions'
 import Item from '../crate/Item'
 import { sendSurvey } from './api/actions'
+import { mensSurvey } from '../../modules/common/surveys/men-survey'
+// import { womensSurvey } from '../../modules/common/surveys/women-survey'
 
 class Survey extends Component {
   constructor(props) {
     super(props) 
     this.state = {
-      survey: mensSurvey,
+      survey: props.location.state.survey,
+      // survey: mensSurvey,
       submitted: false,
       isLoading: false
     }
   }
 
   buildSurvey = () => {
-    const { survey } = this.state
+    const survey = this.state.survey
     return survey.map((question, i) => (
       <Card key={`question-${i}`} style={{width: '75em', margin: '2.5em auto', backgroundColor: white }}>
           <H4 font="secondary" style={{ color: black }}>{question.question}</H4>
