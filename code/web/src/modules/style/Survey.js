@@ -83,7 +83,7 @@ class Survey extends Component {
       // post goes here
       
     } else {
-      this.props.messageShow('Please answer each question in the survey submitting')
+      this.props.messageShow('Please answer each question in the survey before submitting')
       window.setTimeout(() => {
         this.props.messageHide()
       }, 5000)
