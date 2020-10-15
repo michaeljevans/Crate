@@ -17,14 +17,14 @@ import { black, white, grey } from '../../ui/common/colors'
 import { APP_URL } from '../../setup/config/env'
 import { messageShow, messageHide } from '../common/api/actions'
 import { mensSurvey } from '../../../src/modules/common/surveys/men-survey'
-import { womensSurvey } from '../../../src/modules/common/surveys/women-survey'
+// import { womensSurvey } from '../../../src/modules/common/surveys/women-survey'
 import { routes } from '../../setup/routes/'
 
 class Survey extends Component {
   constructor(props) {
     super(props) 
     this.state = {
-      survey: womensSurvey,
+      survey: mensSurvey,
       submitted: false,
       isLoading: false
     }

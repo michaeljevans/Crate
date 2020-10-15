@@ -11,6 +11,18 @@ export const mensSurvey = [{
   }],
   answer: null
 }, {
+    question: 'Which t-shirt best respresents your style?',
+    images: [{
+      src: '/images/mensSurvey/shirt-classic-mens.png', value: 'classic', description: 'fitted t-shirt'
+    }, {
+      src: '/images/mensSurvey/shirt-bold-mens.jpg', value: 'bold', description: 'orange t-shirt with colorful graphic'
+    }, {
+      src: '/images/mensSurvey/shirt-trendy-mens.jpg', value: 'trendy', description: 'loose fitted t-shirt with bold colors'
+    }, {
+        src: '/images/mensSurvey/shirt-sporty-mens.jpg', value: 'sporty', description: 'loose fitted Adidas t-shirt'
+    }],
+    answer: null
+  },{
   question: 'Which outfit would you most likely wear on a date night?',
     images: [{
       src: '/images/mensSurvey/date-classic-mens.jpeg', value: 'classic', description: 'tailored pants and fitted collared t-shirt'
