@@ -11,6 +11,18 @@ export const womensSurvey = [{
   }],
   answer: null
 }, {
+  question: 'Which t-shirt best respresents your style?',
+  images: [{
+    src: '/images/womensSurvey/shirt-classic-womens.jpg', value: 'classic', description: 'fitted t-shirt with ruffled collar'
+  }, {
+    src: '/images/womensSurvey/shirt-bold-womens.jpeg', value: 'bold', description: 'red t-shirt with colorful graphic'
+    }, {
+      src: '/images/womensSurvey/shirt-trendy-womens.jpg', value: 'trendy', description: 'leopard print t-shirt'
+    }, {
+      src: '/images/womensSurvey/shirt-sporty-womens.jpeg', value: 'sporty', description: 'loose fitted Adidas t-shirt'
+    }],
+    answer: null
+  }, {
   question: 'Which outfit would you most likely wear on a date night?',
   images: [{
     src: '/images/womensSurvey/date-trendy-women.jpg', value: 'trendy', description: 'ripped denim jeans with black off the shoulder top'
@@ -25,7 +37,7 @@ export const womensSurvey = [{
 }, {
   question: 'What outfit would you feel most comfortable running errands in?',
   images: [{
-    src: '/images/womensSurvey/casual-classic-women.jpg', value: 'classic', description: 'black slacks with a white t-shirt'
+    src: '/images/womensSurvey/casual-classic-women.jpg', value: 'classic', description: 'black slacks with a white '
   }, {
     src: '/images/womensSurvey/casual-trendy-women.png', value: 'trendy', description: 'black jeans with white t-shirt and denim jacket'
   }, {
