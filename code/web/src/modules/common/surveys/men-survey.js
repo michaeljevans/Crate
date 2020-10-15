@@ -17,7 +17,7 @@ export const mensSurvey = [{
       }, {
       src: '/images/mensSurvey/date-bold-mens.jpeg', value: 'bold', description: 'leopard print suit jacket and shorts with matching tie'
       }, {
-      src: '/images/mensSurvey/date-sports-mens.jpg', value: 'sports', description: 'navy pinstripe tracksuit'
+      src: '/images/mensSurvey/date-sports-mens.jpg', value: 'sporty', description: 'navy pinstripe tracksuit'
       }, {
       src: '/images/mensSurvey/date-trendy-mens.jpeg', value: 'trendy', description: 'oversized t-shirt over fitted pants'
     }],
