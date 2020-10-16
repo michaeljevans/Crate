@@ -29,6 +29,7 @@ describe('user mutations', () => {
     expect(response.body.data.userSignup.email).toEqual('buster@crate.com');
   });
 
+  // Update User
   it('users can be updated', async () => {
     const response = await request(server)
       .post('/')
