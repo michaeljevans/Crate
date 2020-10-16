@@ -79,7 +79,8 @@ class Subscriptions extends PureComponent {
 // Component Properties
 Subscriptions.propTypes = {
   subscriptions: PropTypes.object.isRequired,
-  getListByUser: PropTypes.func.isRequired
+  getListByUser: PropTypes.func.isRequired,
+  user: PropTypes.object.isRequired
 }
 
 // Component State
