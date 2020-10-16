@@ -26,9 +26,14 @@ class Subscriptions extends PureComponent {
   // Runs on client only
   componentDidMount() {
     this.props.getListByUser()
+    // console.log(this.props.user.details.name)
   }
 
   render() {
+    // used name property for setup purposes only
+    // CHANGE name to style when we can access style property
+    const { name } = this.props.user.details
+    
     return (
       <div>
         {/* SEO */}
@@ -46,7 +51,7 @@ class Subscriptions extends PureComponent {
               anytime.</p>
           </GridCell>
           <GridCell style={{ padding: '2em', textAlign: 'right' }}>
-            <H3 font="secondary">Your Style: Trendy but Bold</H3>
+            <H3 font="secondary">Your Style: {name}</H3>
           </GridCell>
         </Grid>
 
@@ -80,7 +85,8 @@ Subscriptions.propTypes = {
 // Component State
 function subscriptionsState(state) {
   return {
-    subscriptions: state.subscriptionsByUser
+    subscriptions: state.subscriptionsByUser,
+    user: state.user
   }
 }
 
