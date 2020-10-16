@@ -26,13 +26,11 @@ class Subscriptions extends PureComponent {
   // Runs on client only
   componentDidMount() {
     this.props.getListByUser()
-    // console.log(this.props.user.details.name)
+    console.log(this.props.subscriptions)
   }
 
   render() {
-    // used name property for setup purposes only
-    // CHANGE name to style when we can access style property
-    const { style } = this.props.user
+    const { style } = this.props.user.details
     
     return (
       <div>
@@ -45,7 +43,7 @@ class Subscriptions extends PureComponent {
         <Grid style={{ backgroundColor: grey }}>
           <GridCell style={{ padding: '2em', textAlign: style ? 'left' : 'center' }}>
             <H3 font="secondary">My subscriptions</H3>
-            
+
             <p style={{ marginTop: '1em', color: grey2 }}>The crates you are subscribed to are listed here. You can
               cancel
               anytime.</p>
