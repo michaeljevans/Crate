@@ -38,12 +38,15 @@ class Subscriptions extends PureComponent {
 
         {/* Top title bar */}
         <Grid style={{ backgroundColor: grey }}>
-          <GridCell style={{ padding: '2em', textAlign: 'center' }}>
+          <GridCell style={{ padding: '2em', textAlign: 'left' }}>
             <H3 font="secondary">My subscriptions</H3>
 
             <p style={{ marginTop: '1em', color: grey2 }}>The crates you are subscribed to are listed here. You can
               cancel
               anytime.</p>
+          </GridCell>
+          <GridCell style={{ padding: '2em', textAlign: 'right' }}>
+            <H3 font="secondary">Your Style: Trendy but Bold</H3>
           </GridCell>
         </Grid>
 
