@@ -36,6 +36,10 @@ const Profile = (props) => (
 
         <p style={{ color: grey2, marginBottom: '2em' }}>{props.user.details.email}</p>
 
+        { props.user.details.style && 
+          <p style={{ color: grey2, marginBottom: '2em' }}>{`Your Style: ${props.user.details.style}`}</p>
+        }
+
         <Link to={userRoutes.subscriptions.path}>
           <Button theme="primary">Subscriptions</Button>
         </Link>
