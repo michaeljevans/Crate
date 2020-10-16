@@ -32,7 +32,7 @@ class Subscriptions extends PureComponent {
   render() {
     // used name property for setup purposes only
     // CHANGE name to style when we can access style property
-    const { name } = this.props.user.details
+    const { style } = this.props.user
     
     return (
       <div>
@@ -43,16 +43,20 @@ class Subscriptions extends PureComponent {
 
         {/* Top title bar */}
         <Grid style={{ backgroundColor: grey }}>
-          <GridCell style={{ padding: '2em', textAlign: 'left' }}>
+          <GridCell style={{ padding: '2em', textAlign: style ? 'left' : 'center' }}>
             <H3 font="secondary">My subscriptions</H3>
-
+            
             <p style={{ marginTop: '1em', color: grey2 }}>The crates you are subscribed to are listed here. You can
               cancel
               anytime.</p>
           </GridCell>
-          <GridCell style={{ padding: '2em', textAlign: 'right' }}>
-            <H3 font="secondary">Your Style: {name}</H3>
-          </GridCell>
+
+          { style && 
+            <GridCell style={{ padding: '2em', textAlign: 'right' }}>
+              <H3 font="secondary">Your Style: {style}</H3>
+            </GridCell>
+          }
+
         </Grid>
 
         {/* Product list */}
