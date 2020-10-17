@@ -39,6 +39,7 @@ export const userRemove = {
   resolve: remove
 }
 
+<<<<<<< HEAD
 //Update
 export const userUpdate = {
   type: UserType,
@@ -54,3 +55,5 @@ export const userUpdate = {
   },
   resolve: updateUser
 }
+=======
+>>>>>>> Working on survey resolver

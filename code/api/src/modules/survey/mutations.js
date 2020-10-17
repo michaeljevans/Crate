@@ -9,10 +9,6 @@ import { create } from './resolvers'
 export const surveyCreate = {
   type: SurveyType,
   args: {
-    result: {
-      name: 'result',
-      type: GraphQLString
-    },
     surveyContents: {
       name: 'surveyContents',
       type: GraphQLString
