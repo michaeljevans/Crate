@@ -18,9 +18,7 @@ export default (state = userInitialState, action) => {
       return {
         ...state,
         isAuthenticated: !isEmpty(action.user),
-        details: action.user,
-        // temporary property, to be deleted when this property is added to the back end: 
-        style: null
+        details: action.user
       }
 
     case LOGIN_REQUEST:

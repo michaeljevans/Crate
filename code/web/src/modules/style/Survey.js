@@ -18,17 +18,14 @@ import { APP_URL } from '../../setup/config/env'
 import { messageShow, messageHide } from '../common/api/actions'
 import { routes } from '../../setup/routes/'
 import { create } from '../subscription/api/actions'
-import Item from '../crate/Item'
+import { subscribeUserToCrate } from '../crate/Item'
 import { sendSurvey } from './api/actions'
-import { mensSurvey } from '../../modules/common/surveys/men-survey'
-// import { womensSurvey } from '../../modules/common/surveys/women-survey'
 
 class Survey extends Component {
   constructor(props) {
     super(props) 
     this.state = {
       survey: props.location.state.survey,
-      // survey: mensSurvey,
       submitted: false,
       isLoading: false
     }
@@ -77,8 +74,8 @@ class Survey extends Component {
   submitSurvey = () => {
     if(this.hasNoMissingAnswers()) {
       this.props.sendSurvey(this.state.survey)
-      // Item.subscribeUserToCrate(this.props.location.state.crateId, this)
-      // .then(() => this.setState({submitted: true}))
+      subscribeUserToCrate(this.props.location.state.crateId, this)
+      .then(() => this.setState({submitted: true}))
       
     } else {
       this.props.messageShow('Please answer each question in the survey before submitting')
@@ -112,8 +109,7 @@ class Survey extends Component {
               this.buildSurvey()
             }
           </GridCell>
-          {/* <GridCell> */}
-          {/* </GridCell> */}
+
         </Grid>
         <Grid>
           <Button

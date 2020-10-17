@@ -20,6 +20,8 @@ import { create } from '../subscription/api/actions'
 import { mensSurvey } from '../../modules/common/surveys/men-survey'
 import { womensSurvey } from '../../modules/common/surveys/women-survey'
 
+
+
 // Component
 class Item extends PureComponent {
 
@@ -32,46 +34,14 @@ class Item extends PureComponent {
     }
   }
 
-  handleClick = (crateId) => {
-    if (!this.props.user.style) {
+   handleClick = (crateId) => {
+    if (!this.props.user.details.style) {
       this.setState({ 
         surveyRedirect: true
       }) 
-      // this.props.history.push(styleSurvey.survey.path)
     } else {
-      this.subscribeUserToCrate(crateId)
+      subscribeUserToCrate(crateId, this)
     }
-  }
-
-  static subscribeUserToCrate = (crateId, owner = this) => {
-    owner.setState({
-      isLoading: true
-    })
-
-    owner.props.messageShow('Subscribing, please wait...')
-    owner.props.create({ crateId })
-    
-      .then(response => {
-        if (response.data.errors && response.data.errors.length > 0) {
-          owner.props.messageShow(response.data.errors[0].message)
-        } else {
-          owner.props.messageShow('Subscribed successfully.')
-
-          owner.props.history.push(userRoutes.subscriptions.path)
-        }
-      })
-    .catch(error => {
-      owner.props.messageShow('There was some error subscribing to this crate. Please try again.')
-    })
-    .then(() => {
-      owner.setState({
-        isLoading: false
-      })
-
-      window.setTimeout(() => {
-        owner.props.messageHide()
-      }, 5000)
-    })
   }
 
   findGenderedSurvey = () => {
@@ -119,6 +89,37 @@ class Item extends PureComponent {
     )
   }
 }
+
+export const subscribeUserToCrate = (crateId, owner = this) => {
+    owner.setState({
+      isLoading: true
+    })
+
+    owner.props.messageShow('Subscribing, please wait...')
+    owner.props.create({ crateId })
+    
+      .then(response => {
+        if (response.data.errors && response.data.errors.length > 0) {
+          owner.props.messageShow(response.data.errors[0].message)
+        } else {
+          owner.props.messageShow('Subscribed successfully.')
+
+          owner.props.history.push(userRoutes.subscriptions.path)
+        }
+      })
+    .catch(error => {
+      owner.props.messageShow('There was some error subscribing to this crate. Please try again.')
+    })
+    .then(() => {
+      owner.setState({
+        isLoading: false
+      })
+
+      window.setTimeout(() => {
+        owner.props.messageHide()
+      }, 5000)
+    })
+  }
 
 // Component Properties
 Item.propTypes = {
