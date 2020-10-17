@@ -1,7 +1,7 @@
 {
   "test": {
     "username": "postgres",
-    "password": null,
+    "password": "4rft7",
     "database": "crate_test",
     "host": "127.0.0.1",
     "dialect": "postgres",
@@ -9,7 +9,7 @@
   },
   "development": {
     "username": "postgres",
-    "password": null,
+    "password": "4rft7",
     "database": "crate",
     "host": "127.0.0.1",
     "dialect": "postgres",
@@ -17,7 +17,7 @@
   },
   "production": {
     "username": "postgres",
-    "password": null,
+    "password": "4rft7",
     "database": "crate",
     "host": "127.0.0.1",
     "dialect": "postgres",

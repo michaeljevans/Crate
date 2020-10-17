@@ -1,1 +1,7 @@
+<<<<<<< HEAD
 .idea/
+=======
+.idea/
+node_modules/
+api/src/config/database.json
+>>>>>>> Add greyson's loging psql
