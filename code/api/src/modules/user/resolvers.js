@@ -16,7 +16,8 @@ export async function create(parentValue, { name, email, password }) {
     return await models.User.create({
       name,
       email,
-      password: passwordHashed
+      password: passwordHashed,
+      role: params.user.roles.user
     })
   } else {
     // User exists
