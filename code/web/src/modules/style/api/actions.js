@@ -9,7 +9,7 @@ export const SURVEY_RESPONSE = 'SURVEY/SURVEY_RESPONSE'
 
 export function sendSurvey(surveyContents) {
   const surveyAsString = JSON.stringify(surveyContents)
-  // return dispatch => {
+  return dispatch => {
     return axios.post(routeApi, mutation({
       operation: 'surveyCreate',
       variables: {surveyContents: surveyAsString},
@@ -21,6 +21,7 @@ export function sendSurvey(surveyContents) {
         if (response.data.errors && response.data.errors.length > 0) {
             error = response.data.errors[0].message
         } else if (response.data.data.surveyCreate && response.data.data.surveyCreate.result !== '') {
+          console.log('hit!')
           const surveyResult = response.data.data.surveyCreate.result
           dispatch({
             type: SAVE_STYLE,
@@ -29,10 +30,11 @@ export function sendSurvey(surveyContents) {
         }
       })
       .catch(error => {
+        console.log(error)
         dispatch({
           type: SURVEY_RESPONSE,
           error: 'Please try again'
         })
       })
-  // }
+  }
 }
