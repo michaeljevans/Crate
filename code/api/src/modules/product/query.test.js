@@ -49,10 +49,20 @@ describe("product queries", () => {
       .get('/')
       .send({ query: '{product(slug: "t-shirt-for-men-grey") {id image name slug }}'})
       .expect(200)
-    console.log(response.body.data)
+    //console.log(response.body.data)
     expect(response.body.data.product.slug).toEqual("t-shirt-for-men-grey")
     expect(response.body.data.product.name).toEqual('T-Shirt for Men - Grey')
     expect(response.body.data.product.id).toEqual(8)
     expect(response.body.data.product.image).toEqual('/images/stock/t-shirt-male-2.jpg')
+  })
+
+  it('can return a list of related products,', async() => {
+    const response = await request(server)
+      .get('/')
+      .send({ query: '{productsRelated(productId: 1){ name description image }}'})
+      .expect(200)
+    console.log(response.body.data.productsRelated)
+    expect(response.body.data.productsRelated.length).toEqual(3)
+
   })
 });
