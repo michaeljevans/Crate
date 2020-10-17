@@ -1,6 +1,6 @@
 // App Imports
 import models from '../../setup/models'
-
+import { updateUserStyle } from '../user/resolvers'
 // Get all surveys
 export async function getAll() {
   return await models.Survey.findAll({
@@ -19,7 +19,7 @@ export async function create(parentValue, { surveyContents }, { auth }) {
       result: style,
       surveyContents: surveyContents
     });
-    models.User.style = style
+    updateUserStyle(auth.user.id, style)
     return style
   } else {
     throw new Error('Unable to record survey.')
