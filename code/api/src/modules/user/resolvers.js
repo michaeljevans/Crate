@@ -29,20 +29,6 @@ export async function create(parentValue, { name, email, password }) {
   }
 }
 
-// Update
-export async function updateUserStyle(parentValue, { id, style }, { auth }) {
-  if (auth.user) {
-    return await models.User.update(
-      {
-        style
-      },
-      { where: { id } }
-    )
-  } else {
-    throw new Error('Style could not be updated.')
-  }
-}
-
 export async function login(parentValue, { email, password }) {
   const user = await models.User.findOne({ where: { email } })
 
@@ -73,14 +59,15 @@ export async function login(parentValue, { email, password }) {
     }
   }
 }
-export async function updateUser(parentValue, { id, style }, { auth }) {
+export async function updateUserStyle(parentValue, { id, style }, { auth }) {
   if (auth.user && auth.user.role === params.user.roles.user) {
-    return await models.User.update(
+    await models.User.update(
       {
         style
       },
       { where: { id } }
     )
+    return await getById(parentValue, { id })
   } else {
     throw new Error('Operation denied.')
   }
