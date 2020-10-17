@@ -27,7 +27,7 @@ export function getList(isLoading = true, forceRefresh = false) {
       error: null,
       isLoading
     })
-
+//This query is found at 'api/src/modules/product/query.js/line#9'
     return axios.post(routeApi, query({
       operation: 'products',
       fields: ['id', 'name', 'slug', 'description', 'image', 'createdAt', 'updatedAt']
@@ -65,7 +65,7 @@ export function get(slug, isLoading = true) {
       type: PRODUCTS_GET_REQUEST,
       isLoading
     })
-
+// This query is found at 'api/src/modules/product/query.js/line#15'
     return axios.post(routeApi, query({
       operation: 'product',
       variables: { slug },
@@ -106,6 +106,7 @@ export function get(slug, isLoading = true) {
 }
 
 // Get single product by Id
+// 
 export function getById(productId) {
   return dispatch => {
     return axios.post(routeApi, query({
@@ -127,7 +128,7 @@ export function getRelatedList(productId, isLoading = true) {
         error: null,
         isLoading
       })
-
+// This query is found at 'api/src/modules/product/query.js/line#33'
       return axios.post(routeApi, query({
         operation: 'productsRelated',
         variables: { productId },
@@ -172,6 +173,7 @@ export function createOrUpdate(product) {
 }
 
 // Create product
+// This mutation is found at 'api/src/modules/product/mutations.js/line#9'
 export function create(product) {
   return dispatch => {
     return axios.post(routeApi, mutation({
@@ -183,6 +185,7 @@ export function create(product) {
 }
 
 // Update product
+// This mutation is found at 'api/src/modules/product/mutations.js/line#46'
 export function update(product) {
   return dispatch => {
     return axios.post(routeApi, mutation({
@@ -194,6 +197,7 @@ export function update(product) {
 }
 
 // Remove product
+// This mutation is found at 'api/src/modules/product/mutations.js/line#88'
 export function remove(variables) {
   return dispatch => {
     return axios.post(routeApi, mutation({
@@ -205,6 +209,7 @@ export function remove(variables) {
 }
 
 // Get product types
+// This query is found at 'api/src/modules/product/query.js/line#42'
 export function getTypes() {
   return dispatch => {
     return axios.post(routeApi, query({

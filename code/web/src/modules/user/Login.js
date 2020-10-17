@@ -46,7 +46,7 @@ class Login extends Component {
       user
     })
   }
-
+// onSubmit is triggered when the user has filled in email and password fields and clicks 'Login' button
   onSubmit = (event) => {
     event.preventDefault()
 
@@ -72,7 +72,8 @@ class Login extends Component {
         }, 5000)
       })
   }
-
+// Everything within this render block is what is displayed 
+// when the login button is clicked
   render() {
     const { isLoading, error } = this.props.user
 

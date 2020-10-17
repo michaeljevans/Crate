@@ -20,6 +20,7 @@ module.exports = {
         email: 'user@crate.com',
         password: bcrypt.hashSync('123456', config.saltRounds),
         role: params.user.roles.user,
+        style: "Punk rock",
         createdAt: new Date(),
         updatedAt: new Date()
       },

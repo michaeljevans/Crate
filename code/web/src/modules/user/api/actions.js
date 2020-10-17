@@ -32,6 +32,7 @@ export function login(userCredentials, isLoading = true) {
       type: LOGIN_REQUEST,
       isLoading
     })
+//The post request below calls userLogin - a const in 'api/src/modules/user/query.js'
 
     return axios.post(routeApi, query({
       operation: 'userLogin',
@@ -74,9 +75,11 @@ export function loginSetUserLocalStorageAndCookie(token, user) {
 
   // Set cookie for SSR
   cookie.set('auth', { token, user }, { path: '/' })
+  //This 'auth' cookie is required in many api resolver methods
 }
 
 // Register a user
+// This mutation is found 'api/src/modules/user/mutations.js/line#9'
 export function register(userDetails) {
   return dispatch => {
     return axios.post(routeApi, mutation({
@@ -109,6 +112,7 @@ export function logoutUnsetUserLocalStorageAndCookie() {
 }
 
 // Get user gender
+// This query is found at 'api/src/modules/user/query.js/line#46'
 export function getGenders() {
   return dispatch => {
     return axios.post(routeApi, query({

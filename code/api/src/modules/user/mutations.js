@@ -55,3 +55,22 @@ export const userRemove = {
   },
   resolve: remove
 }
+<<<<<<< HEAD
+=======
+
+//Update
+export const userUpdate = {
+  type: UserType,
+  args: {
+    id: {
+      name: 'id',
+      type: GraphQLInt
+    },
+    style: {
+      name: 'style',
+      type: GraphQLString
+    }
+  },
+  resolve: updateUser
+}
+>>>>>>> user_style

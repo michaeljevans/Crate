@@ -23,7 +23,7 @@ export function getList(orderBy = 'DESC', isLoading = true) {
       error: null,
       isLoading
     })
-
+// This query is found at 'api/src/modules/crate/query.js/line#9'
     return axios.post(routeApi, query({
       operation: 'crates',
       variables: { orderBy },
@@ -58,7 +58,7 @@ export function get(slug, isLoading = true) {
       type: CRATES_GET_REQUEST,
       isLoading
     })
-
+// I don't see this operation 'crate' listed in the api crate query.js file ??
     return axios.post(routeApi, query({
       operation: 'crate',
       variables: { slug },
@@ -83,6 +83,7 @@ export function get(slug, isLoading = true) {
 }
 
 // Get single crate by Id
+// This query is found at 'api/src/modules/crate/query.js/line#20'
 export function getById(crateId) {
   return dispatch => {
     return axios.post(routeApi, query({
@@ -104,6 +105,7 @@ export function createOrUpdate(crate) {
 }
 
 // Create crate
+// This mutation is found at 'api/src/modules/crate/mutations.js/line#9'
 export function create(variables) {
   return dispatch => {
     return axios.post(routeApi, mutation({
@@ -115,6 +117,7 @@ export function create(variables) {
 }
 
 // Update crate
+// This mutation is found at 'api/src/modules/crate/mutations.js/line#26'
 export function update(crate) {
   return dispatch => {
     return axios.post(routeApi, mutation({
@@ -126,6 +129,7 @@ export function update(crate) {
 }
 
 // Remove crate
+// This mutation is found at 'api/src/modules/crate/mutations.js/line#48'
 export function remove(variables) {
   return dispatch => {
     return axios.post(routeApi, mutation({
