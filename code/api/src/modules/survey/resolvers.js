@@ -14,13 +14,13 @@ export async function getAll() {
 export async function create(parentValue, { surveyContents }, { auth }) {
   const style = determineStyle(surveyContents)
   if(auth.user && auth.user.id > 0) {
-    await models.Survey.create({
+    const new_survey = await models.Survey.create({
       userId: auth.user.id,
       result: style,
       surveyContents: surveyContents
     });
-    updateUserStyle(auth.user.id, style)
-    return style
+    await updateUserStyle(parentValue, {id: auth.user.id, style}, { auth })
+    return await models.Survey.findOne( { where: new_survey.id })
   } else {
     throw new Error('Unable to record survey.')
   }
@@ -28,7 +28,7 @@ export async function create(parentValue, { surveyContents }, { auth }) {
 const determineStyle = (surveyContents) => {
   const styleCounter = {}
   JSON.parse(surveyContents).forEach(question => {
-    if (styleCounter[question.anser]) {
+    if (styleCounter[question.answer]) {
       styleCounter[question.answer].count += 1
     } else {
       styleCounter[question.answer] = { answer: question.answer, count: 1 }
