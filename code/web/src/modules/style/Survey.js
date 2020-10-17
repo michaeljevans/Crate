@@ -76,7 +76,7 @@ class Survey extends Component {
 
   submitSurvey = () => {
     if(this.hasNoMissingAnswers()) {
-      sendSurvey(this.state.survey)
+      this.props.sendSurvey(this.state.survey)
       // Item.subscribeUserToCrate(this.props.location.state.crateId, this)
       // .then(() => this.setState({submitted: true}))
       
@@ -138,5 +138,5 @@ Survey.propTypes = {
   messageHide: PropTypes.func.isRequired
 }
 
-export default connect(null, {create, messageShow, messageHide})(withRouter(Survey))
+export default connect(null, {sendSurvey, create, messageShow, messageHide})(withRouter(Survey))
 

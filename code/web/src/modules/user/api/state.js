@@ -47,7 +47,7 @@ export default (state = userInitialState, action) => {
       }
     
     case SAVE_STYLE: 
-      newDetails = state.user.details
+      const newDetails = state.details
       newDetails.style = action.surveyResult
       return {
         ...state,
