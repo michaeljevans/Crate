@@ -1,11 +1,7 @@
 {
-<<<<<<< HEAD
-  "development": {
-    "username": "joshuatukman",
-=======
+  
   "test": {
-    "username": "postgres",
->>>>>>> b2758002e9e166a69efa835f8654de81e972d978
+    "username": "joshuatukman",
     "password": null,
     "database": "crate_test",
     "host": "127.0.0.1",
@@ -13,8 +9,8 @@
     "seederStorage": "sequelize"
   },
   "development": {
-    "username": "postgres",
-    "password": "4rft67",
+    "username": "joshuatukman",
+    "password": null,
     "database": "crate",
     "host": "127.0.0.1",
     "dialect": "postgres",
