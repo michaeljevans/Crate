@@ -11,38 +11,37 @@ export async function getAll() {
 }
 
 // Create survey
-export async function create(parentValue, { result, surveyContents }, { auth }) {
+export async function create(parentValue, { surveyContents }, { auth }) {
+  const style = determineStyle(surveyContents)
   if(auth.user && auth.user.id > 0) {
-    const survey = models.Survey.create({
+    await models.Survey.create({
       userId: auth.user.id,
-      result: determineStyle(surveyContents),
-      surveyContents: JSON.stringify(surveyContents)
+      result: style,
+      surveyContents: surveyContents
     });
-    models.User.style = survey.result
+    models.User.style = style
+    return style
   } else {
     throw new Error('Unable to record survey.')
   }
-
-  const determineStyle = (surveyContents) => {
-    const styleCounter = {}
-    surveyContents.forEach(question => {
-      if (styleCounter[question.anser]) {
-        styleCounter[question.answer].count += 1
-      } else {
-        styleCounter[question.answer] = {answer: question.answer, count: 1}
-      }
-    })
-    const scoredResults = Object.values(styleCounter).sort((a, b) = > b.count - a.count)
-    return printStyle(scoredResults)
-  }
-
-  const printStyle = (results) => {
-    if (results.length === 1) {
-      return `Super ${results[0].answer}`
+}
+const determineStyle = (surveyContents) => {
+  const styleCounter = {}
+  JSON.parse(surveyContents).forEach(question => {
+    if (styleCounter[question.anser]) {
+      styleCounter[question.answer].count += 1
     } else {
-      return `${results[0].answer} but ${results[1].answer}`
+      styleCounter[question.answer] = { answer: question.answer, count: 1 }
     }
-  }
+  })
+  const scoredResults = Object.values(styleCounter).sort((a, b) => b.count - a.count)
+  return printStyle(scoredResults)
+}
 
-  return survey;
+const printStyle = (results) => {
+  if (results.length === 1) {
+    return `Super ${results[0].answer}`
+  } else {
+    return `${results[0].answer} but ${results[1].answer}`
+  }
 }

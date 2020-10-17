@@ -3,7 +3,11 @@ import request from 'supertest';
 import schema from '../../setup/schema';
 import graphqlHTTP from 'express-graphql';
 
+<<<<<<< HEAD
 describe('user queries', () => {
+=======
+describe("user queries", () => {
+>>>>>>> Working on survey resolver
   let server;
 
   beforeAll(() => {
@@ -52,5 +56,9 @@ describe('user queries', () => {
     expect(response.body.data.userLogin.user.name).toEqual('Tobias');
     expect(response.body.data.userLogin.user.email).toEqual('tobias@crate.com');
   });
+<<<<<<< HEAD
 
 });
+=======
+ })
+>>>>>>> Working on survey resolver

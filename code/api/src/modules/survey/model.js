@@ -3,6 +3,7 @@
 // Survey
 module.exports = function(sequelize, DataTypes) {
   let Survey = sequelize.define('surveys', {
+
     userId: {
       type: DataTypes.INTEGER
     },
@@ -10,8 +11,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.TEXT
     },
     surveyContents: {
-      type: DataTypes.TEXT
-    }
+      type: DataTypes.TEXT}
   })
 
   Survey.associate = function(models) {
