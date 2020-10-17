@@ -2,7 +2,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Link, withRouter } from 'react-router-dom'
+import { Link, Redirect, withRouter } from 'react-router-dom'
 
 // UI Imports
 import Card from '../../ui/card/Card'
@@ -14,8 +14,11 @@ import { white, grey2, black } from '../../ui/common/colors'
 // App Imports
 import { APP_URL } from '../../setup/config/env'
 import userRoutes from '../../setup/routes/user'
+import styleSurvey from '../../setup/routes/styleSurvey'
 import { messageShow, messageHide } from '../common/api/actions'
 import { create } from '../subscription/api/actions'
+import { mensSurvey } from '../../modules/common/surveys/men-survey'
+import { womensSurvey } from '../../modules/common/surveys/women-survey'
 
 // Component
 class Item extends PureComponent {
@@ -24,44 +27,64 @@ class Item extends PureComponent {
     super(props)
 
     this.state = {
-      isLoading: false
+      isLoading: false,
+      surveyRedirect: false
     }
   }
 
-  onClickSubscribe = (crateId) => {
-    this.setState({
+  handleClick = (crateId) => {
+    if (!this.props.user.style) {
+      this.setState({ 
+        surveyRedirect: true
+      }) 
+      // this.props.history.push(styleSurvey.survey.path)
+    } else {
+      this.subscribeUserToCrate(crateId)
+    }
+  }
+
+  static subscribeUserToCrate = (crateId, owner = this) => {
+    owner.setState({
       isLoading: true
     })
 
-    this.props.messageShow('Subscribing, please wait...')
-
-    this.props.create({ crateId })
+    owner.props.messageShow('Subscribing, please wait...')
+    owner.props.create({ crateId })
+    
       .then(response => {
         if (response.data.errors && response.data.errors.length > 0) {
-          this.props.messageShow(response.data.errors[0].message)
+          owner.props.messageShow(response.data.errors[0].message)
         } else {
-          this.props.messageShow('Subscribed successfully.')
+          owner.props.messageShow('Subscribed successfully.')
 
-          this.props.history.push(userRoutes.subscriptions.path)
+          owner.props.history.push(userRoutes.subscriptions.path)
         }
       })
-      .catch(error => {
-        this.props.messageShow('There was some error subscribing to this crate. Please try again.')
+    .catch(error => {
+      owner.props.messageShow('There was some error subscribing to this crate. Please try again.')
+    })
+    .then(() => {
+      owner.setState({
+        isLoading: false
       })
-      .then(() => {
-        this.setState({
-          isLoading: false
-        })
 
-        window.setTimeout(() => {
-          this.props.messageHide()
-        }, 5000)
-      })
+      window.setTimeout(() => {
+        owner.props.messageHide()
+      }, 5000)
+    })
+  }
+
+  findGenderedSurvey = () => {
+    let { name } = this.props.crate
+    name = name.split(' ')
+    const gender = name[name.length - 1]
+
+    return gender === 'Men' ? mensSurvey : womensSurvey
   }
 
   render() {
     const { id, name, description } = this.props.crate
-    const { isLoading } = this.state
+    const { isLoading, surveyRedirect } = this.state
 
     return (
       <Card style={{ width: '18em', backgroundColor: white }}>
@@ -77,7 +100,7 @@ class Item extends PureComponent {
           <p style={{ textAlign: 'center', marginTop: '1.5em', marginBottom: '1em' }}>
             <Button
               theme="primary"
-              onClick={this.onClickSubscribe.bind(this, id)}
+              onClick={this.handleClick.bind(this, id)}
               type="button"
               disabled={ isLoading }
             >
@@ -85,6 +108,13 @@ class Item extends PureComponent {
             </Button>
           </p>
         </div>
+        {surveyRedirect && 
+          <Redirect to ={{
+            pathname: "/style-preferences",
+            state: {crateId: id, survey: this.findGenderedSurvey()}
+          }}
+          />
+        }
       </Card>
     )
   }

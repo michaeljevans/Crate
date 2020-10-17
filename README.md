@@ -1,6 +1,6 @@
 ![Crate](https://raw.githubusercontent.com/atulmy/atulmy.github.io/master/images/crate/hero-with-link.png)
 
-# Crate 👕👖📦
+# Crate 👕👖📦 [![Build Status](https://travis-ci.org/michaeljevans/Crate.svg?branch=main)](https://travis-ci.org/michaeljevans/Crate)
 
 #### Get monthly subscription of trendy clothes and accessories.
 - **API** built with Node, GraphQL, Express, Sequelize (MySQL) and JWT Auth
@@ -108,7 +108,7 @@ Click on image to view fullscreen and zoom
 - Setup
   - API: Install packages and database setup (migrations and seed) `cd api` and `npm run setup`
   - Webapp: Install packages `cd web` and `npm install`
-  - Mobile: 
+  - Mobile:
     1. Install packages `cd mobile` and `npm install`
     2. Install iOS dependencies `cd mobile/ios` `pod install`
 - Development
