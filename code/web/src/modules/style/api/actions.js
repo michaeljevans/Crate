@@ -17,11 +17,9 @@ export function sendSurvey(surveyContents) {
     }))
       .then(response => {
         let error = ''
-        console.log(response)
         if (response.data.errors && response.data.errors.length > 0) {
             error = response.data.errors[0].message
         } else if (response.data.data.surveyCreate && response.data.data.surveyCreate.result !== '') {
-          console.log('hit!')
           const surveyResult = response.data.data.surveyCreate.result
           dispatch({
             type: SAVE_STYLE,
