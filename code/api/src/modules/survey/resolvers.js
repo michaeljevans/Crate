@@ -27,15 +27,16 @@ export async function create(parentValue, { surveyContents }, { auth }) {
 }
 const determineStyle = (surveyContents) => {
   const styleCounter = {}
-  JSON.parse(surveyContents).forEach(question => {
-    if (styleCounter[question.answer]) {
-      styleCounter[question.answer].count += 1
-    } else {
-      styleCounter[question.answer] = { answer: question.answer, count: 1 }
-    }
-  })
-  const scoredResults = Object.values(styleCounter).sort((a, b) => b.count - a.count)
-  return printStyle(scoredResults)
+    JSON.parse(surveyContents).forEach(question => {
+      if (styleCounter[question.answer]) {
+        styleCounter[question.answer].count += 1
+      } else {
+        styleCounter[question.answer] = { answer: question.answer, count: 1 }
+      }
+    })
+    const scoredResults = Object.values(styleCounter).sort((a, b) => b.count - a.count)
+
+    return printStyle(scoredResults)
 }
 
 const printStyle = (results) => {

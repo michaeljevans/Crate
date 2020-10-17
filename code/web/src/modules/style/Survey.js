@@ -76,12 +76,9 @@ class Survey extends Component {
 
   submitSurvey = () => {
     if(this.hasNoMissingAnswers()) {
-      console.log(routes.subscriptions)
-      // sendSurvey(this.state.survey)
-      Item.subscribeUserToCrate(this.props.location.state.crateId, this)
-      .then(() => this.setState({submitted: true}))
-      // set state isLoading = true
-      // post goes here
+      sendSurvey(this.state.survey)
+      // Item.subscribeUserToCrate(this.props.location.state.crateId, this)
+      // .then(() => this.setState({submitted: true}))
       
     } else {
       this.props.messageShow('Please answer each question in the survey before submitting')
