@@ -13,7 +13,7 @@
     "start:prod": "npm run build:prod && npm run start:server",
     "build:prod": "babel src -s -D -d build",
     "start:server": "node build/index.js",
-    "test": "jest --watch --runInBand --detectOpenHandles"
+    "test": "jest --watchAll --runInBand --detectOpenHandles"
   },
   "keywords": [],
   "author": "",
@@ -25,10 +25,11 @@
     "@babel/plugin-transform-runtime": "7.9.0",
     "@babel/preset-env": "7.9.5",
     "jest": "^26.5.3",
+    "jest-environment-jsdom-sixteen": "^1.0.3",
     "nodemon": "2.0.3",
-    "sequelize-cli": "^5.5.1",
     "redux": "^3.7.2",
     "redux-devtools-extension": "^2.13.8",
+    "sequelize-cli": "^5.5.1",
     "supertest": "^5.0.0"
   },
   "dependencies": {

@@ -4,14 +4,6 @@ import request from 'supertest';
 import schema from '../../setup/schema';
 import graphqlHTTP from 'express-graphql';
 
-describe('user queries', () => {
-
-import request from 'supertest';
-import express from 'express';
-import graphqlHTTP from 'express-graphql';
-import schema from '../../setup/schema';
-
-
 describe("user queries", () => {
   let server;
 
@@ -62,4 +54,3 @@ describe("user queries", () => {
     expect(response.body.data.userLogin.user.email).toEqual('tobias@crate.com');
   });
  })
-});
